@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.bg-login{
+  /* background-image: url('./assets/background.png'); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-default{
+  background-color: #000000;
+}
+
+.bg-button-green{
+  background-color: #45FF79;
+  color: black;
+}
+
+.text-color-primary{
+  color: #45FF79
+}
+
+.title-login{
+  color: #FFFFFF;
+  font-family: 'Gafata', sans-serif;
+}
+
+.input-form-login{
+  width: 70%;
+}
+
+.sidebar, .navbar{
+  background-color: #4862c3;
+}
+
+.default-input{
+  background-color: #f7f7f7;
+  border: 1px solid #bdbdbd;
+  color: #202020;
+  font-size: medium;
+  border-radius: 5px;
+  display: block;
+}
+
+.default-input:focus{
+  border: 1px solid #48ff00;
+}
+
+.primary-color-text{
+  color: #4862c3;
+}
+
+.primary-color-bg{
+  background-color: #4862c3;
+}

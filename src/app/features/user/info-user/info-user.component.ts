@@ -3,12 +3,11 @@ import { NotifierService } from 'src/app/shared/notifier.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/interface/dto/user';
 import { UtilsService } from 'src/app/shared/utils.service';
-import { UserService } from '../../../../routes/user.service';
-import { JogadorService } from '../../../../routes/jogador.service';
 import { RoleService } from 'src/app/routes/role.service';
-import { Role } from 'src/app/interface/dto/role';
+import { User } from 'src/app/interfaces/dto/user';
+import { Role } from 'src/app/interfaces/dto/role';
+import { UserService } from 'src/app/routes/user.service';
 
 @Component({
   selector: 'app-info-user',
@@ -28,7 +27,6 @@ export class InfoUserComponent implements OnInit {
     private activedRouter: ActivatedRoute,
     private userService: UserService,
     private roleService: RoleService,
-    private jogadorService: JogadorService,
     private router: Router,
     private utils: UtilsService,
     private formBuilder: FormBuilder,

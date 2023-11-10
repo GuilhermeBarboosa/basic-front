@@ -2,15 +2,12 @@ import { NotifierService } from 'src/app/shared/notifier.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Jogador } from 'src/app/interface/dto/jogador';
-import { User } from 'src/app/interface/dto/user';
 import { RoleService } from 'src/app/routes/role.service';
-
-import { Posicao } from 'src/app/interface/dto/posicao';
-import { UserInput } from 'src/app/interface/input/userInput';
-import { Role } from 'src/app/interface/dto/role';
 import { UtilsService } from 'src/app/shared/utils.service';
-import { UserService } from '../../../../routes/user.service';
+import { User } from 'src/app/interfaces/dto/user';
+import { Role } from 'src/app/interfaces/dto/role';
+import { UserService } from 'src/app/routes/user.service';
+import { UserInput } from 'src/app/interfaces/input/userInput';
 
 @Component({
   selector: 'app-edit-user',
@@ -19,10 +16,8 @@ import { UserService } from '../../../../routes/user.service';
 })
 export class EditUserComponent implements OnInit {
   formulario!: FormGroup;
-  jogador?: Jogador;
   user?: User;
   roles?: Role[];
-  posicao?: Posicao[];
   isDisabled = false;
   id = this.activedRouter.snapshot.params['id'];
   Sim = 'Sim';

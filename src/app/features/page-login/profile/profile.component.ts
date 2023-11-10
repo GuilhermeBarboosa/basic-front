@@ -1,14 +1,10 @@
-import { User } from 'src/app/interface/dto/user';
-import { JogadorService } from 'src/app/routes/jogador.service';
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/routes/login.service';
-import { Jogador } from 'src/app/interface/dto/jogador';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UtilsService } from 'src/app/shared/utils.service';
 import { UserService } from '../../../routes/user.service';
-import { JogadorRachaService } from '../../../routes/jogador-racha.service';
-import { JogadorRacha } from 'src/app/interface/dto/jogador-racha';
 import { Router } from '@angular/router';
+import { User } from 'src/app/interfaces/dto/user';
 
 @Component({
   selector: 'app-profile',
@@ -19,16 +15,12 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private loginService: LoginService,
-    private jogadorService: JogadorService,
     private router: Router,
-    private jogadorRachaService: JogadorRachaService,
     private formBuilder: FormBuilder,
     private utils: UtilsService
   ) {}
 
-  jogadorRacha: JogadorRacha[] = [];
   user?: User;
-  jogador?: Jogador;
   userForm!: FormGroup;
   jogadorForm! : FormGroup;
   isDisabled = true;
@@ -51,27 +43,6 @@ export class ProfileComponent implements OnInit {
         this.createTable();
       });
 
-      this.jogadorService.getByUser(Number(data.id)).subscribe((res) => {
-        var jogadorResponse = JSON.parse(JSON.stringify(res));
-        this.jogador = jogadorResponse;
-
-        this.createTableJogador();
-      });
-
-      this.jogadorRachaService.getByUser(Number(data.id)).subscribe((res) => {
-        var jogadorResponse = JSON.parse(JSON.stringify(res));
-        let arrayJogadores: JogadorRacha[] = [];
-
-
-        jogadorResponse.forEach((element: any) => {
-          element.nomeRacha = this.utils.formatterString(
-            element.nomeRacha
-          );
-          arrayJogadores.push(element);
-        });
-
-        this.jogadorRacha = arrayJogadores;
-      });
     }, error => {
       this.loginService.logout();
     });
@@ -116,23 +87,6 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  createTableJogador() {
-    this.jogadorForm = this.formBuilder.group({
-
-      posicao: [
-        { value: this.jogador?.posicao, disabled: this.isDisabled },
-        Validators.required,
-      ],
-      gols: [
-        { value: this.jogador?.gols, disabled: this.isDisabled },
-        Validators.required,
-      ],
-      assistencias: [
-        { value: this.jogador?.assistencias, disabled: this.isDisabled },
-        Validators.required,
-      ],
-    });
-  }
 
   findInfo(idRacha: number, idQuadra:number ) {
     this.router.navigateByUrl(`quadra/racha/info/${idRacha}/${idQuadra}`);

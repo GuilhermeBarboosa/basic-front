@@ -1,75 +1,48 @@
 
-  <div class="grid grid-flow-row-dense grid-cols-3">
-    <div class="col-span-2">
-      <div class="grid full-height bg-login">
-        <a class="m-auto" routerLink="/home" routerLinkActive="active">
-        </a>
+<section class="flex items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
+  <div class=" width-50">
+      <div class="w-full  bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+          <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+              <h1 class="text-xl font-bold leading-tight tracking-tight primary-color-text md:text-2xl dark:text-white">
+                  Login
+              </h1>
+              <form class="space-y-4 md:space-y-6" [formGroup]="registerForm">
+                <div>
+                  <label for="name" class="block text-md font-medium text-gray-500">Nome</label>
+                  <input formControlName="name" type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-400 block w-full p-2.5"  required="">
+                  <p *ngIf="registerForm.get('name')?.errors && registerForm.get('name')?.touched" class="text-red-500 my-0">Nome obrigatório</p>
+                </div>
+                <div>
+                  <label for="cpf" class="block text-md font-medium text-gray-500">Cpf</label>
+                  <input formControlName="cpf" type="text" name="cpf" id="cpf" mask="000.000.000-00" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-400 block w-full p-2.5"  required="">
+                  <p *ngIf="registerForm.get('cpf')?.errors && registerForm.get('cpf')?.touched" class="text-red-500 my-0">Cpf obrigatório</p>
+                </div>
+                <div>
+                  <label for="email" class="block text-md font-medium text-gray-500">Email</label>
+                  <input formControlName="email" type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-400 block w-full p-2.5"  required="">
+                  <p *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-red-500 my-0">Email obrigatório</p>
+                </div>
+                <div>
+                  <label for="password" class="block text-md font-medium text-gray-500">Senha</label>
+                  <input formControlName="password" type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-400 block w-full p-2.5" required="">
+                  <p *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="text-red-500 my-0">Senha obrigatória</p>
+                </div>
+                <div>
+                  <label for="passwordConfirm" class="block text-md font-medium text-gray-500">Confirmar senha</label>
+                  <input formControlName="passwordConfirm" type="password" name="passwordConfirm" id="passwordConfirm" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-400 block w-full p-2.5" required="">
+                  <p *ngIf="registerForm.get('passwordConfirm')?.errors && registerForm.get('passwordConfirm')?.touched" class="text-red-500 my-0">Senha obrigatória</p>
+                </div>
+
+                  <div class="flex items-center justify-end">
+
+                      <div class="flex items-end">
+                        <button (click)="register()" type="button" class="rounded-lg text-white primary-color-bg hover:bg-green-500 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium text-sm px-5 py-2.5 text-center mr-2 mb-2">Entrar</button>
+                      </div>
+
+                  </div>
+
+              </form>
+          </div>
       </div>
-    </div>
-
-    <div class="">
-      <div class="grid full-height bg-default">
-        <div class="m-auto input-form-login block text-center">
-
-          <form [formGroup]="formulario" >
-            <p class="title-login p-5" style="font-size: 40px;">Registrar</p>
-
-            <div  class=" text-left">
-            <div class="">
-              <label for="nome" class="block text-md font-medium text-white">Nome</label>
-              <input formControlName="nome" type="text" name="nome" id="nome" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5" required="">
-            </div>
-
-            <div class="">
-              <label for="idade" class="block text-md font-medium text-white">Idade</label>
-              <input formControlName="idade" type="text" name="idade" id="idade" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5"  mask="00">
-            </div>
-
-            <div class="">
-              <label for="telefone" class="block text-md font-medium text-white">Telefone</label>
-              <input formControlName="telefone" type="text" name="telefone" id="telefone" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5"  mask="(00) 00000-0000">
-            </div>
-
-            <div class="">
-              <label for="cpf" class="block text-md font-medium text-white">Cpf</label>
-              <input formControlName="cpf" type="text" name="cpf" id="cpf" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5"  mask="000.000.000-00" >
-            </div>
-
-            <div class="">
-              <label for="email" class="block text-md font-medium text-white">Email</label>
-              <input formControlName="email" type="email" name="email" id="email" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5" required="">
-            </div>
-
-            <div class="">
-              <label for="senha" class="block text-md font-medium text-white">Senha</label>
-              <input formControlName="senha" type="password" name="senha" id="senha" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5" required="">
-            </div>
-
-            <div class="">
-              <label for="senhaSecundaria" class="block text-md font-medium text-white">Repita a senha</label>
-              <input formControlName="senhaSecundaria" type="password" name="senhaSecundaria" id="senhaSecundaria" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5" required="">
-            </div>
-
-            <div class="block ">
-              <label for="posicao" class="text-left text-white">Selecione a posição</label>
-                <select id="posicao" formControlName="posicao" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                  <option value="" disabled selected>Selecione a posição</option>
-                  <option *ngFor="let posicao of posicaoArray" [value]="posicao.posicao">
-                    {{posicao.posicao}}
-                  </option>
-                </select>
-            </div>
-
-            </div>
-
-            <div class="mt-4 items-center flex justify-end">
-              <button (click)="registrar()" class="px-4 py-1 text-white font-light tracking-wider bg-sky-500 hover:bg-gray-800 rounded"
-                >Registrar</button>
-            </div>
-
-        </form>
-
-        </div>
-      </div>
-    </div>
   </div>
+</section>

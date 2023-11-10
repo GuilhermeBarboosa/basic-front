@@ -15,30 +15,33 @@ import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationRoutes } from './authentication.routing';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxMaskModule } from 'ngx-mask';
-import { LoginComponent } from 'src/app/feature/page-login/login/login.component';
-import { RegisterComponent } from '../../feature/page-login/register/register.component';
+import { LoginComponent } from '../features/page-login/login/login.component';
+import { RegisterComponent } from '../features/page-login/register/register.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(AuthenticationRoutes),
-    NgxMaskModule.forRoot({
+     RouterModule.forChild(AuthenticationRoutes),
+     NgxMaskModule.forRoot({
       dropSpecialCharacters: false // ao salvar, vai manter a mascara
     }),
-    MatFormFieldModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatInputModule,
-    MatButtonModule,
-    MatCardModule,
-    MatDialogModule,
-    MatAutocompleteModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    HttpClientModule,
+     MatFormFieldModule,
+     FormsModule,
+     MatInputModule,
+     ReactiveFormsModule,
+     MatSelectModule,
+     MatInputModule,
+     MatButtonModule,
+     ReactiveFormsModule,
+     MatCardModule,
+     MatDialogModule,
+     MatAutocompleteModule,
+     MatProgressSpinnerModule,
+     MatIconModule,
+     HttpClientModule,
+     ToastrModule.forRoot(),
   ],
 })
 export class AuthenticationModule {}

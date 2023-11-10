@@ -1,15 +1,13 @@
-import { JogadorService } from 'src/app/routes/jogador.service';
 import { NotifierService } from 'src/app/shared/notifier.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from 'src/app/interface/dto/user';
-import { UserInput } from 'src/app/interface/input/userInput';
 import { RoleService } from 'src/app/routes/role.service';
-import { PosicaoService } from 'src/app/routes/posicao.service';
-import { Role } from 'src/app/interface/dto/role';
-import { Posicao } from 'src/app/interface/dto/posicao';
-import { UserService } from '../../../../routes/user.service';
+import { Role } from 'src/app/interfaces/dto/role';
+import { User } from 'src/app/interfaces/dto/user';
+import { UserService } from 'src/app/routes/user.service';
+import { UserInput } from 'src/app/interfaces/input/userInput';
+
 
 @Component({
   selector: 'app-create-user',
@@ -19,7 +17,6 @@ import { UserService } from '../../../../routes/user.service';
 export class CreateUserComponent implements OnInit {
   user!: User;
   roles?: Role[];
-  posicao?: Posicao[];
   formulario!: FormGroup;
   Sim = 'Sim';
   Nao = 'Não';

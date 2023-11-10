@@ -2,14 +2,14 @@ import { Router } from '@angular/router';
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
-import { User } from 'src/app/interface/dto/user';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotifierService } from 'src/app/shared/notifier.service';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
-import { UserInput } from 'src/app/interface/input/userInput';
 import { MatPaginator } from '@angular/material/paginator';
-import { UserService } from '../../../../routes/user.service';
+import { UserService } from 'src/app/routes/user.service';
+import { User } from 'src/app/interfaces/dto/user';
+import { UserInput } from 'src/app/interfaces/input/userInput';
 
 @Component({
   selector: 'app-user-table',
