@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="flex">
+  <app-sidebar></app-sidebar>
+
+  <form class="h-full w-full m-5" [formGroup]="formulario" *ngIf="formulario">
+
+      <div class="flex justify-between">
+        <p class="text-white font-medium justify-start text-lg font-bold">REGISTRE
+          O USUÁRIO</p>
+      </div>
+
+      <app-user-form [userForm]="formulario" [roleArray]="roles"></app-user-form>
+
+      <div class="items-center flex justify-between my-2">
+
+        <div>
+          <app-button-red [value] = "Nao" (click)="return()"></app-button-red>
+        </div>
+
+        <div class="align-end">
+          <app-button-green [value] = "Sim" (click)="save()"></app-button-green>
+        </div>
+
+      </div>
+
+</form>
+
+</div>

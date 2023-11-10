@@ -1,0 +1,48 @@
+<div class="grid grid-flow-row-dense grid-cols-3">
+  <div class="col-span-2">
+    <div class="grid full-height bg-login">
+      <a class="m-auto" routerLink="/home" routerLinkActive="active">
+        <!-- <img src="../../../assets/bg.png" alt="Logo Racha"/> -->
+      </a>
+    </div>
+  </div>
+
+  <div class="">
+    <div class="grid full-height bg-default">
+      <div class="m-auto input-form-login text-center">
+        <p class="title-login p-5" style="font-size: 40px;">Bem-vindo</p>
+
+        <form class="" [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="text-left">
+              <div class="m-2">
+                <label for="email" class="block text-md font-medium text-white">Email</label>
+                <input formControlName="email" type="email" name="email" id="email" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5"  required="">
+                <p *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="text-red-500 my-0">Email obrigatório</p>
+              </div>
+
+              <div class="m-2">
+                  <label for="senha" class="block text-md font-medium text-white">Senha</label>
+                  <input formControlName="senha" type="password" name="senha" id="senha" class="bg-white text-black sm:text-sm rounded-lg focus:ring-green-300 focus:border-green-300 block w-full p-2.5" required="">
+                  <p *ngIf="loginForm.get('senha')?.errors && loginForm.get('senha')?.touched" class="text-red-500">Senha obrigatória</p>
+                </div>
+          </div>
+
+
+          <div class="form-button m-5 mb-0">
+            <button
+              class="bg-button-green hover:bg-green-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+              >
+              Entrar
+            </button>
+          </div>
+
+          <hr>
+
+          <p class="text-white text-md">Não tem conta? <a routerLink="/authentication/register" routerLinkActive="active" class="text-color-primary">Registre-se</a> </p>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

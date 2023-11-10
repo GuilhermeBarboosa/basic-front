@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<div class="flex">
+  <app-sidebar></app-sidebar>
+
+  <form class="h-full w-full m-5" [formGroup]="formulario" *ngIf="formulario">
+
+      <div class="flex justify-between">
+        <p class="text-white font-medium justify-start text-lg font-bold">EDITAR
+          USUÁRIO</p>
+      </div>
+
+      <div class="">
+        <label class="block text-sm text-white" for="nome">Código</label>
+        <input formControlName="id" class="default-input p-2.5 text-center" type="text" id="nome" required>
+      </div>
+
+      <app-user-form [userForm]="formulario" [roleArray]="roles"></app-user-form>
+
+      <div class="items-center flex justify-between my-2">
+        <div class="align-end">
+          <app-button-red [value] = "Nao" (click)="return()"></app-button-red>
+        </div>
+
+        <div>
+          <app-button-green [value] = "Sim" (click)="edit()"></app-button-green>
+        </div>
+      </div>
+
+</form>
+
+</div>

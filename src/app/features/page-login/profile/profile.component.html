@@ -1,0 +1,157 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+
+<div class="flex">
+  <app-sidebar></app-sidebar>
+
+  <div class="h-full w-full p-4">
+    <h2 class="mb-2 text-lg font-semibold text-white dark:text-white">
+      Meu perfil
+    </h2>
+
+    <div>
+      <form class="h-full w-full" [formGroup]="userForm" *ngIf="userForm">
+        <div>
+          <div class="grid grid-cols-4">
+            <div class="col-span-3 mr-4">
+              <label class="block text-sm text-white" for="nome">Nome</label>
+              <input
+                formControlName="nome"
+                class="default-input w-full p-2.5"
+                type="text"
+                id="nome"
+                aria-label="nome"
+                required
+              />
+            </div>
+
+            <div >
+              <label class="block text-sm text-white" for="idade">Idade</label>
+              <input
+                formControlName="idade"
+                class="default-input w-full p-2.5"
+                type="number"
+                id="idade"
+                placeholder="idade"
+                aria-label="idade"
+                required
+              />
+            </div>
+
+          </div>
+
+          <div class="grid grid-cols-4">
+
+            <div class="col-span-2 mr-4">
+              <label class="block text-sm text-white" for="cpf">Cpf</label>
+              <input
+                formControlName="cpf"
+                class="default-input w-full p-2.5"
+                type="text"
+                id="nome"
+                aria-label="nome"
+                required
+              />
+            </div>
+
+            <div class="col-span-2">
+              <label class="block text-sm text-white" for="role">Telefone</label>
+              <input
+                formControlName="telefone"
+                class="default-input w-full p-2.5"
+                type="text"
+                id="telefone"
+                placeholder="telefone"
+                aria-label="telefone"
+                mask="(00) 00000-0000"
+              />
+            </div>
+          </div>
+
+          <div class="">
+            <label class="block text-sm text-white" for="email">E-mail</label>
+            <input
+              formControlName="email"
+              class="default-input w-full p-2.5"
+              type="email"
+              id="email"
+              placeholder="Email"
+              aria-label="email"
+              required
+            />
+          </div>
+
+        </div>
+      </form>
+
+    </div>
+
+
+    <div class="mt-5">
+      <h2 class="text-lg mb-0 font-semibold text-white dark:text-white">
+        Jogador
+      </h2>
+      <form class="h-full w-full" [formGroup]="jogadorForm" *ngIf="jogadorForm">
+
+        <div class="grid grid-cols-3">
+          <div class="mr-4">
+            <label class="block text-sm text-white" for="posicao">Posição</label>
+            <input
+              formControlName="posicao"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="posicao"
+              aria-label="posicao"
+              required
+            />
+          </div>
+
+          <div class="mr-4">
+            <label class="block text-sm text-white" for="gols">Gols</label>
+            <input
+              formControlName="gols"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="gols"
+              aria-label="gols"
+              required
+            />
+          </div>
+
+          <div>
+            <label class="block text-sm text-white" for="assistencias">Assistências</label>
+            <input
+              formControlName="assistencias"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="assistencias"
+              aria-label="assistencias"
+              required
+            />
+          </div>
+        </div>
+
+    </form>
+    </div>
+
+
+
+    <div class="mt-5 w-full " *ngIf="jogadorRacha != null">
+      <h2 class="mb-2 text-lg font-semibold text-white dark:text-white">
+        Rachas:
+      </h2>
+      <div class="bg-white rounded-lg text-black p-4">
+        <ul *ngFor="let racha of jogadorRacha" class="flex items-center list-disc list-inside text-md flex">
+          <li>
+            {{ racha.nomeRacha }}
+          </li>
+          <div (click)="findInfo(racha.idRacha, racha.idQuadra)" class="cursor-pointer flex items-center p-2 text-black rounded-lg hover:text-black">
+            <mat-icon>info</mat-icon>
+          </div>
+      </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
