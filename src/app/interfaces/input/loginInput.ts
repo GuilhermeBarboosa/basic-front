@@ -1,9 +1,9 @@
 export class LoginInput {
   email!: string;
-  senha!: string;
+  password!: string;
 
-  constructor(email: string, senha: string) {
+  constructor(email: string, password: string) {
     this.email = email;
-    this.senha = senha;
+    this.password = password;
   }
 }

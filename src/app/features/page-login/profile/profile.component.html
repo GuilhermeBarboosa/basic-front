@@ -1,40 +1,27 @@
-<div>
-  <app-navbar></app-navbar>
-</div>
+<app-navbar></app-navbar>
 
-<div class="flex">
-  <app-sidebar></app-sidebar>
+<app-sidebar></app-sidebar>
+
+<div class="home-section">
+
 
   <div class="h-full w-full p-4">
-    <h2 class="mb-2 text-lg font-semibold text-white dark:text-white">
+    <h2 class="mb-2 text-lg font-semibold text-black dark:text-white">
       Meu perfil
     </h2>
 
     <div>
       <form class="h-full w-full" [formGroup]="userForm" *ngIf="userForm">
         <div>
-          <div class="grid grid-cols-4">
-            <div class="col-span-3 mr-4">
-              <label class="block text-sm text-white" for="nome">Nome</label>
+          <div class="">
+            <div class="col-span-3">
+              <label class="block text-sm text-white" for="name">Nome</label>
               <input
-                formControlName="nome"
+                formControlName="name"
                 class="default-input w-full p-2.5"
                 type="text"
-                id="nome"
-                aria-label="nome"
-                required
-              />
-            </div>
-
-            <div >
-              <label class="block text-sm text-white" for="idade">Idade</label>
-              <input
-                formControlName="idade"
-                class="default-input w-full p-2.5"
-                type="number"
-                id="idade"
-                placeholder="idade"
-                aria-label="idade"
+                id="name"
+                aria-label="name"
                 required
               />
             </div>
@@ -49,37 +36,24 @@
                 formControlName="cpf"
                 class="default-input w-full p-2.5"
                 type="text"
-                id="nome"
-                aria-label="nome"
+                id="name"
+                aria-label="name"
                 required
               />
             </div>
 
             <div class="col-span-2">
-              <label class="block text-sm text-white" for="role">Telefone</label>
+              <label class="block text-sm text-white" for="email">E-mail</label>
               <input
-                formControlName="telefone"
+                formControlName="email"
                 class="default-input w-full p-2.5"
-                type="text"
-                id="telefone"
-                placeholder="telefone"
-                aria-label="telefone"
-                mask="(00) 00000-0000"
+                type="email"
+                id="email"
+                placeholder="Email"
+                aria-label="email"
+                required
               />
             </div>
-          </div>
-
-          <div class="">
-            <label class="block text-sm text-white" for="email">E-mail</label>
-            <input
-              formControlName="email"
-              class="default-input w-full p-2.5"
-              type="email"
-              id="email"
-              placeholder="Email"
-              aria-label="email"
-              required
-            />
           </div>
 
         </div>

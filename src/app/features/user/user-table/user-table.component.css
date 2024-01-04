@@ -1,0 +1,11 @@
+.mat-elevation-z2 {
+  overflow-x: auto;
+ }
+
+ .mat-header-cell{
+  width: 100% !important;
+ }
+
+table {
+  width: 100%;
+}

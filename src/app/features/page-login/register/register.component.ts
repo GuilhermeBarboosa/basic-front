@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
 
   register(){
     if(this.registerForm.get('password')?.value != this.registerForm.get('passwordConfirm')?.value){
-      this.notifier.ShowError('As senhas não coincidem!');
+      this.notifier.showError('As senhas não coincidem!');
     }else{
       if(this.registerForm.valid) {
 
@@ -52,19 +52,19 @@ export class RegisterComponent implements OnInit {
 
         this.userService.create(userInput).subscribe(
           (data) => {
-            this.notifier.ShowSuccess('Usuário cadastrado com sucesso!');
+            this.notifier.showSuccess('Usuário cadastrado com sucesso!');
 
             localStorage.setItem('email', userDTO.email);
 
             this.router.navigateByUrl('/authentication/login');
           },
           (error) => {
-            this.notifier.ShowError(error.error);
+            this.notifier.showError(error.error);
           }
         );
 
       } else {
-        this.notifier.ShowError('Formulário inválido!');
+        this.notifier.showError('Formulário inválido!');
       }
     }
 

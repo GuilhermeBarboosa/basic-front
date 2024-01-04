@@ -1,12 +1,12 @@
 <app-navbar></app-navbar>
 
-<div class="flex">
-  <app-sidebar></app-sidebar>
+<app-sidebar></app-sidebar>
 
-  <form class="h-full w-full m-5" [formGroup]="formulario" *ngIf="formulario">
+<div class="home-section">
+  <form class="m-5" [formGroup]="formulario" *ngIf="formulario">
 
       <div class="flex justify-between">
-        <p class="text-white font-medium justify-start text-lg font-bold">INFO
+        <p class="text-black font-medium justify-start text-lg font-bold">INFO
           DO USUÁRIO</p>
 
       </div>
@@ -18,32 +18,20 @@
 
       <div class="">
         <label class="block text-sm text-white" for="nome">Código</label>
-        <input formControlName="id" class="default-input text-center p-2.5" type="text" id="nome" required>
+        <input formControlName="id" class="default-input text-center p-2.5" type="text" id="name" required>
       </div>
 
       <form class="h-full w-full" [formGroup]="formulario" *ngIf="formulario">
         <div>
-          <div class="grid grid-cols-4">
-            <div class="col-span-3 mr-4">
-              <label class="block text-sm text-white" for="nome">Nome</label>
+          <div class="">
+            <div class="col-span-3">
+              <label class="block text-sm text-white" for="name">Nome</label>
               <input
-                formControlName="nome"
+                formControlName="name"
                 class="default-input w-full p-2.5"
                 type="text"
-                id="nome"
-                aria-label="nome"
-                required
-              />
-            </div>
-
-            <div >
-              <label class="block text-sm text-white" for="idade">Idade</label>
-              <input
-                formControlName="idade"
-                class="default-input w-full p-2.5"
-                type="number"
-                id="idade"
-                aria-label="idade"
+                id="name"
+                aria-label="name"
                 required
               />
             </div>
@@ -58,29 +46,14 @@
                 formControlName="cpf"
                 class="default-input w-full p-2.5"
                 type="text"
-                id="nome"
-                aria-label="nome"
+                id="name"
+                aria-label="name"
                 mask="000.000.000-00"
                 required
               />
             </div>
 
             <div class="col-span-2">
-              <label class="block text-sm text-white" for="role">Telefone</label>
-              <input
-                formControlName="telefone"
-                class="default-input w-full p-2.5"
-                type="text"
-                id="telefone"
-                aria-label="telefone"
-                mask="(00) 00000-0000"
-              />
-            </div>
-          </div>
-
-
-
-            <div class="col">
               <label class="block text-sm text-white " for="email">E-mail</label>
               <input
                 formControlName="email"
@@ -91,6 +64,7 @@
                 required
               />
             </div>
+          </div>
         </div>
       </form>
 

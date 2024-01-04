@@ -12,19 +12,19 @@ export class NotifierService {
   ngOnInit() {
   }
 
-  ShowSuccess(message: string) {
+  showSuccess(message: string) {
     this.toastr.success('', message, { timeOut: 3000});
   }
 
-  ShowError(message: string) {
+  showError(message: string) {
     this.toastr.error('', message, { timeOut: 3000});
   }
 
-  ShowWarning(message: string) {
+  showWarning(message: string) {
     this.toastr.warning('', message, { timeOut: 3000});
   }
 
-  ShowInfo(message: string) {
+  showInfo(message: string) {
     this.toastr.info(message);
   }
 

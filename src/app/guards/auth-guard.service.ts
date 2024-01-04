@@ -34,7 +34,7 @@ export class AuthGuardService  {
 
       if (roleJson.role != userRole) {
         this.router.navigate(['/home']);
-        this.notifier.ShowError("Você não tem permissão para acessar essa página");
+        this.notifier.showError("Você não tem permissão para acessar essa página");
         return false;
       }
       return true;

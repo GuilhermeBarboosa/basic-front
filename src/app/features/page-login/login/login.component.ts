@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['gui@gmail.com', Validators.required],
-      senha: ['123', Validators.required],
+      password: ['adm', Validators.required],
     });
 
     if (localStorage.getItem('email') != null) {
@@ -39,18 +39,20 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       let loginInput = new LoginInput(
         this.loginForm.get('email')?.value,
-        this.loginForm.get('senha')?.value
+        this.loginForm.get('password')?.value
       );
+
+      console.log(loginInput)
 
       this.loginService.login(loginInput).subscribe(
         (data: any) => {
           var data = JSON.parse(JSON.stringify(data));
           this.tokenJwtService.setToken(data);
-          this.notifier.ShowSuccess('Login efetuado com sucesso!');
-          this.router.navigate(['/home']);
+          this.notifier.showSuccess('Login efetuado com sucesso!');
+          this.router.navigate(['/user']);
         },
         (error: any) => {
-          this.notifier.ShowError(error.error);
+          this.notifier.showError(error.error);
         }
       );
     }

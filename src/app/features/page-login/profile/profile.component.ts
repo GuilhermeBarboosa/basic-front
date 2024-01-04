@@ -52,24 +52,16 @@ export class ProfileComponent implements OnInit {
   createTable() {
     this.userForm = this.formBuilder.group({
       id: [{ value: this.user?.id, disabled: this.isDisabled }],
-      nome: [
-        { value: this.user?.nome, disabled: this.isDisabled },
+      name: [
+        { value: this.user?.name, disabled: this.isDisabled },
         Validators.required,
       ],
       email: [
         { value: this.user?.email, disabled: this.isDisabled },
         Validators.required,
       ],
-      idade: [
-        { value: this.user?.idade, disabled: this.isDisabled },
-        Validators.required,
-      ],
       role: [
         { value: this.user?.idRole, disabled: this.isDisabled },
-        Validators.required,
-      ],
-      telefone: [
-        { value: this.user?.telefone, disabled: this.isDisabled },
         Validators.required,
       ],
       cpf: [

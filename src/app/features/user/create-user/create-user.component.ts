@@ -38,19 +38,19 @@ export class CreateUserComponent implements OnInit {
         this.createTable();
       },
       (error) => {
-        this.notifier.ShowError(error.error);
+        this.notifier.showError(error.error);
       }
     );
   }
 
   async createTable() {
     this.formulario = this.formBuilder.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
+      name: ['', [Validators.required, Validators.minLength(3)]],
       email: [
         '',
         [Validators.required, Validators.email, Validators.minLength(3)],
       ],
-      senha: ['', [Validators.required, Validators.minLength(3)]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
       idade: [
         '',
         [Validators.required, Validators.min(14), Validators.max(70)],
@@ -66,9 +66,9 @@ export class CreateUserComponent implements OnInit {
 
     if (this.formulario.valid) {
       let userDTO = {
-        nome: this.formulario.get('nome')?.value,
+        name: this.formulario.get('nome')?.value,
         email: this.formulario.get('email')?.value,
-        senha: this.formulario.get('senha')?.value,
+        password: this.formulario.get('senha')?.value,
         idade: this.formulario.get('idade')?.value,
         telefone: this.formulario.get('telefone')?.value,
         cpf: this.formulario.get('cpf')?.value,
@@ -79,16 +79,16 @@ export class CreateUserComponent implements OnInit {
 
       this.userService.create(userInput).subscribe(
         (data) => {
-          this.notifier.ShowSuccess('Usuário cadastrado com sucesso!');
+          this.notifier.showSuccess('Usuário cadastrado com sucesso!');
           this.router.navigateByUrl('/user');
         },
         (error) => {
-          this.notifier.ShowError(error.error);
+          this.notifier.showError(error.error);
         }
       );
     } else {
       console.log(this.formulario);
-      this.notifier.ShowError('Formulário inválido!');
+      this.notifier.showError('Formulário inválido!');
     }
   }
 

@@ -14,7 +14,6 @@ export class UserInput {
 
   constructor(user: any) {
     this.name = user.name;
-    this.idade = user.idade;
     this.cpf = user.cpf;
     this.email = user.email;
     this.password = user.password;

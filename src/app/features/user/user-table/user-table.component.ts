@@ -22,7 +22,7 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
   mandaFiltroFalse = 'Excluir';
   displayedColumns: string[] = [
     'id',
-    'nome',
+    'name',
     'email',
     'cpf',
     'role',
@@ -68,7 +68,7 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
 
     this.userService.ativar(userInput, user.id!).subscribe(
       (data) => {
-        this.notifier.ShowSuccess('Usuário ativado com sucesso!');
+        this.notifier.showSuccess('Usuário ativado com sucesso!');
         window.location.reload();
       }
     );
@@ -86,11 +86,11 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
       if(result) {
         this.userService.delete(user.id).subscribe(
           (data) => {
-            this.notifier.ShowSuccess('Usuário excluído com sucesso!');
+            this.notifier.showSuccess('Usuário excluído com sucesso!');
             window.location.reload();
           },
           (error) => {
-            this.notifier.ShowError('Erro ao excluir usuário!');
+            this.notifier.showError('Erro ao excluir usuário!');
           }
         );
       }

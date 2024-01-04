@@ -58,25 +58,18 @@ export class EditUserComponent implements OnInit {
   async createTable() {
     this.formulario = this.formBuilder.group({
       id: [{ value: this.user?.id, disabled: true }],
-      nome: [
-        { value: this.user?.nome, disabled: this.isDisabled },
+      name: [
+        { value: this.user?.name, disabled: this.isDisabled },
         Validators.required,
       ],
       email: [
         { value: this.user?.email, disabled: this.isDisabled },
         Validators.required,
       ],
-      senha: [{ value: '', disabled: this.isDisabled }, Validators.required],
-      idade: [
-        { value: this.user?.idade, disabled: this.isDisabled },
-        Validators.required,
-      ],
+      password: [{ value: '', disabled: this.isDisabled }, Validators.required],
+
       role: [
         { value: this.user?.idRole, disabled: this.isDisabled },
-        Validators.required,
-      ],
-      telefone: [
-        { value: this.user?.telefone, disabled: this.isDisabled },
         Validators.required,
       ],
       cpf : [
@@ -97,12 +90,12 @@ export class EditUserComponent implements OnInit {
   edit() {
     if (this.formulario.valid) {
       let userDTO = {
-        nome: this.formulario.get('nome')?.value,
+        name: this.formulario.get('nome')?.value,
         idade: this.formulario.get('idade')?.value,
         telefone: this.formulario.get('telefone')?.value,
         cpf: this.formulario.get('cpf')?.value,
         email: this.formulario.get('email')?.value,
-        senha: this.formulario.get('senha')?.value,
+        password: this.formulario.get('senha')?.value,
         posicao: this.formulario.get('posicao')?.value,
         role: this.formulario.get('role')?.value,
       };
@@ -111,16 +104,16 @@ export class EditUserComponent implements OnInit {
 
       this.userService.edit(userInput, this.user!.id!).subscribe(
         (data) => {
-          this.notifier.ShowSuccess('Usuário atualizado com sucesso!');
+          this.notifier.showSuccess('Usuário atualizado com sucesso!');
           this.router.navigateByUrl(`/user`);
         },
         (error) => {
-          this.notifier.ShowError(error.error);
+          this.notifier.showError(error.error);
           return;
         }
       );
     } else {
-      this.notifier.ShowInfo('Preencha todos os campos!');
+      this.notifier.showInfo('Preencha todos os campos!');
     }
   }
 

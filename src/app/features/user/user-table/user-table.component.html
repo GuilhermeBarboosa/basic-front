@@ -1,117 +1,186 @@
-<div>
-  <app-navbar></app-navbar>
-</div>
-
-<div class="flex">
-  <app-sidebar></app-sidebar>
+<app-navbar></app-navbar>
 
 
-  <div class="h-full w-full ">
+<app-sidebar></app-sidebar>
+<div class="home-section">
 
-    <div class="flex m-5 justify-end">
-
-      <div class="justify-end">
-        <a routerLink="register" routerLinkActive="active">
-          <app-button-green [value] = "Adicionar" ></app-button-green>
-        </a>
+  <div class="h-full w-full">
+    <div class="flex justify-between m-5">
+      <div class="">
+        <p class="title text-white font-medium text-lg font-bold">
+          TABELA DO USUÁRIO
+        </p>
       </div>
 
+      <div class="">
+        <a routerLink="register" routerLinkActive="active">
+          <app-button-green [value]="Adicionar"></app-button-green>
+        </a>
+      </div>
     </div>
 
-    <div class="flex justify-between m-4">
-
-
+    <div class="flex justify-between m-5">
       <div class="flex">
         <div class="flex items-center mr-3">
-          <input checked id="ativo" type="radio" value="" name="tipos" (click)=getByAtivo() class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500">
-          <label for="ativo" class="ml-2 text-sm font-medium text-white" >Ativo</label>
+          <input
+            checked
+            id="ativo"
+            type="radio"
+            value=""
+            name="tipos"
+            (click)="getByAtivo()"
+            class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500"
+          />
+          <label for="ativo" class="ml-2 text-sm font-medium text-white"
+            >Ativo</label
+          >
         </div>
         <div class="flex items-center">
-          <input id="inativo" type="radio" value="" name="tipos" (click)=getByInativo() class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500">
-          <label for="inativo" class="ml-2 text-sm font-medium text-white" >Inativo</label>
+          <input
+            id="inativo"
+            type="radio"
+            value=""
+            name="tipos"
+            (click)="getByInativo()"
+            class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500"
+          />
+          <label for="inativo" class="ml-2 text-sm font-medium text-white"
+            >Inativo</label
+          >
         </div>
       </div>
 
       <div class="">
         <div class="relative">
-            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            </div>
-            <input matInput (keyup)="applyFilter($event)" placeholder="Filter" class="block w-full p-2 pl-10 text-sm text-black border border-green-300 rounded-lg bg-green-50"  required>
+          <div
+            class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5 text-gray-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              ></path>
+            </svg>
+          </div>
+          <input
+            matInput
+            (keyup)="applyFilter($event)"
+            placeholder="Filter"
+            class="block w-full p-2 pl-10 text-sm text-black border border-green-300 rounded-lg bg-green-50"
+            required
+          />
         </div>
       </div>
-
     </div>
 
-    <div class="h-full w-full p-4" >
-      <mat-table mat-table [dataSource]="usersArray" class="mat-elevation-z2">
+    <div class="">
+      <div class="example-container  p-4 relative overflow-x-auto">
+        <table mat-table [dataSource]="usersArray" class="mat-elevation-z2">
+          <ng-container matColumnDef="id">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>
+              Id
+            </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let user"> {{ user.id }} </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="id">
-          <mat-header-cell mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-          <mat-cell mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="name">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>
+              Nome
+            </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let user"> {{ user.name }} </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="nome">
-          <mat-header-cell mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
-          <mat-cell mat-cell *matCellDef="let user"> {{user.nome}} </mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="email">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>
+              Email
+            </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let user">
+              {{ user.email }}
+            </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="email">
-          <mat-header-cell mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-          <mat-cell mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="cpf">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>
+              Cpf
+            </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let user"> {{ user.cpf }} </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="cpf">
-          <mat-header-cell mat-header-cell *matHeaderCellDef> Cpf </mat-header-cell>
-          <mat-cell mat-cell *matCellDef="let user"> {{user.cpf}} </mat-cell>
-        </ng-container>
+          <ng-container matColumnDef="role">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>
+              Role
+            </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let user"> {{ user.role }} </mat-cell>
+          </ng-container>
 
-        <ng-container matColumnDef="role">
-          <mat-header-cell mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
-          <mat-cell mat-cell *matCellDef="let user"> {{user.role}} </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="status">
-          <div>
-            <mat-header-cell mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-            <mat-cell mat-cell *matCellDef="let user"> {{user.actived}} </mat-cell>
-          </div>
-        </ng-container>
-
-        <ng-container matColumnDef="info">
-          <mat-header-cell mat-header-cell *matHeaderCellDef> </mat-header-cell>
-          <mat-cell mat-cell *matCellDef="let user">
-            <app-button-yellow [value] = "Info" (click)="info(user)" value="{{user.id}}"></app-button-yellow>
-          </mat-cell>
-        </ng-container>
-
-        <ng-container matColumnDef="excluir">
-          <mat-header-cell mat-header-cell *matHeaderCellDef> </mat-header-cell>
-          <mat-cell mat-cell *matCellDef="let user">
-            <div *ngIf="user.actived == 'Ativo'">
-              <app-button-red [value]="mandaFiltroFalse" (click)="openDialog(user)"></app-button-red>
+          <ng-container matColumnDef="status">
+            <div>
+              <mat-header-cell mat-header-cell *matHeaderCellDef>
+                Status
+              </mat-header-cell>
+              <mat-cell mat-cell *matCellDef="let user">
+                {{ user.actived }}
+              </mat-cell>
             </div>
-            <div *ngIf="user.actived == 'Desativado'">
-              <app-button-green [value]="mandaFiltroTrue" (click)="ativar(user)"></app-button-green>
-            </div>
-          </mat-cell>
-        </ng-container>
+          </ng-container>
+
+          <ng-container matColumnDef="info">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let user">
+              <app-button-yellow
+                [value]="Info"
+                class="m-2"
+                (click)="info(user)"
+                value="{{ user.id }}"
+              ></app-button-yellow>
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="excluir">
+            <mat-header-cell mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let user">
+              <div *ngIf="user.actived == 'Ativo'">
+                <app-button-red
+                  [value]="mandaFiltroFalse"
+                  (click)="openDialog(user)"
+                ></app-button-red>
+              </div>
+              <div *ngIf="user.actived == 'Desativado'">
+                <app-button-green
+                  [value]="mandaFiltroTrue"
+                  (click)="ativar(user)"
+                ></app-button-green>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </table>
+      </div>
 
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-      </mat-table>
+      <div>
 
-      <mat-paginator #paginator
+      <mat-paginator
+      #paginator
       [pageSize]="10"
       [pageSizeOptions]="[5, 10, 20]"
-      [showFirstLastButtons]="true">
+      [showFirstLastButtons]="true"
+    >
     </mat-paginator>
-
+      </div>
     </div>
 
 
   </div>
-
 </div>
-

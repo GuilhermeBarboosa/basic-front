@@ -13,9 +13,9 @@
                     <p *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="text-red-500 my-0">Email obrigatório</p>
                   </div>
                   <div>
-                    <label for="senha" class="block text-md font-medium text-gray-500">Email</label>
-                    <input formControlName="senha" type="password" name="senha" id="senha" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-400 block w-full p-2.50" required="">
-                    <p *ngIf="loginForm.get('senha')?.errors && loginForm.get('senha')?.touched" class="text-red-500">Senha obrigatória</p>
+                    <label for="password" class="block text-md font-medium text-gray-500">Email</label>
+                    <input formControlName="password" type="password" name="password" id="password" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-green-400 block w-full p-2.50" required="">
+                    <p *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="text-red-500">password obrigatória</p>
                   </div>
                   <div class="flex items-center justify-between">
                       <div class="flex items-start">

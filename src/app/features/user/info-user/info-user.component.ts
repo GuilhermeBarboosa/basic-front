@@ -50,7 +50,7 @@ export class InfoUserComponent implements OnInit {
         this.createTable();
       },
       (error) => {
-        this.notifier.ShowError(error.error);
+        this.notifier.showError(error.error);
       }
     );
   }
@@ -58,24 +58,16 @@ export class InfoUserComponent implements OnInit {
   createTable() {
     this.formulario = this.formBuilder.group({
       id: [{ value: this.user?.id, disabled: this.isDisabled }],
-      nome: [
-        { value: this.user?.nome, disabled: this.isDisabled },
+      name: [
+        { value: this.user?.name, disabled: this.isDisabled },
         Validators.required,
       ],
       email: [
         { value: this.user?.email, disabled: this.isDisabled },
         Validators.required,
       ],
-      idade: [
-        { value: this.user?.idade, disabled: this.isDisabled },
-        Validators.required,
-      ],
       role: [
         { value: this.user?.idRole, disabled: this.isDisabled },
-        Validators.required,
-      ],
-      telefone: [
-        { value: this.user?.telefone, disabled: this.isDisabled },
         Validators.required,
       ],
       cpf: [
@@ -104,11 +96,11 @@ export class InfoUserComponent implements OnInit {
   remove() {
     this.userService.delete(this.id).subscribe(
       (data) => {
-        this.notifier.ShowError('Usuário removido com sucesso!');
+        this.notifier.showError('Usuário removido com sucesso!');
         this.router.navigateByUrl('/user');
       },
       (error) => {
-        this.notifier.ShowError(error.error);
+        this.notifier.showError(error.error);
       }
     );
   }
