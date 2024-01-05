@@ -90,13 +90,10 @@ export class EditUserComponent implements OnInit {
   edit() {
     if (this.formulario.valid) {
       let userDTO = {
-        name: this.formulario.get('nome')?.value,
-        idade: this.formulario.get('idade')?.value,
-        telefone: this.formulario.get('telefone')?.value,
+        name: this.formulario.get('name')?.value,
         cpf: this.formulario.get('cpf')?.value,
         email: this.formulario.get('email')?.value,
-        password: this.formulario.get('senha')?.value,
-        posicao: this.formulario.get('posicao')?.value,
+        password: this.formulario.get('password')?.value,
         role: this.formulario.get('role')?.value,
       };
 
@@ -108,6 +105,7 @@ export class EditUserComponent implements OnInit {
           this.router.navigateByUrl(`/user`);
         },
         (error) => {
+          console.log(error)
           this.notifier.showError(error.error);
           return;
         }

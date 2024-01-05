@@ -46,8 +46,8 @@
                 formControlName="cpf"
                 class="default-input w-full p-2.5"
                 type="text"
-                id="name"
-                aria-label="name"
+                id="cpf"
+                aria-label="cpf"
                 mask="000.000.000-00"
                 required
               />
@@ -65,6 +65,36 @@
               />
             </div>
           </div>
+
+          <div>
+            <div class="flex justify-between" >
+
+              <div class="col">
+                <label class="block text-sm text-white" for="created">Criado</label>
+                <input
+                  formControlName="created"
+                  class="default-input p-2.5"
+                  type="text"
+                  id="created"
+                  aria-label="created"
+                  required
+                />
+              </div>
+
+              <div class="col">
+                <label class="block  text-sm text-white " for="updated">Modificado</label>
+                <input
+                  formControlName="updated"
+                  class="default-input p-2.5"
+                  type="text"
+                  id="updated"
+                  aria-label="updated"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
         </div>
       </form>
 

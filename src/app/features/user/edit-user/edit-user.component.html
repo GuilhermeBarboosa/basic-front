@@ -4,7 +4,7 @@
 
 <div class="home-section">
 
-  <form class="h-full w-full m-5" [formGroup]="formulario" *ngIf="formulario">
+  <form class="h-full m-5" [formGroup]="formulario" *ngIf="formulario">
 
       <div class="flex justify-between">
         <p class="text-black font-medium justify-start text-lg font-bold">EDITAR
@@ -16,11 +16,11 @@
         <input formControlName="id" class="default-input p-2.5 text-center" type="text" id="name" required>
       </div>
 
-      <form class="h-full w-full" [formGroup]="formulario" *ngIf="formulario">
+      <form class="h-full" [formGroup]="formulario" *ngIf="formulario">
         <div>
           <div class="">
             <div class="col-span-3">
-              <label class="block text-sm text-white" for="nome">Nome</label>
+              <label class="block text-sm text-white" for="name">Nome</label>
               <input
                 formControlName="name"
                 class="default-input w-full p-2.5"
