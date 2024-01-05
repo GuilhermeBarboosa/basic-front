@@ -4,7 +4,8 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-label{color: #000000 !important}
+label{color: #000000 !important;
+ padding: 7px 0px 3px 0px !important;}
 
 .title{
   color: #000000 !important

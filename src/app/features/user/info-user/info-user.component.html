@@ -11,10 +11,7 @@
 
       </div>
 
-      <div class="flex justify-between">
-        <app-button-green [value] = 'Voltar' (click)="return()"></app-button-green>
-        <app-button-yellow [value] = 'Editar' (click)="edit()"></app-button-yellow>
-      </div>
+
 
       <div class="">
         <label class="block text-sm text-white" for="nome">Código</label>
@@ -98,6 +95,10 @@
         </div>
       </form>
 
+      <div class="flex justify-between pt-3">
+        <app-button-green [value] = 'Voltar' (click)="return()"></app-button-green>
+        <app-button-yellow [value] = 'Editar' (click)="edit()"></app-button-yellow>
+      </div>
     </form>
 
 </div>
