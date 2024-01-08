@@ -1,13 +1,13 @@
-import { NotifierService } from 'src/app/shared/notifier.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { RoleService } from 'src/app/routes/role.service';
-import { UtilsService } from 'src/app/shared/utils.service';
-import { User } from 'src/app/interfaces/dto/user';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Role } from 'src/app/interfaces/dto/role';
-import { UserService } from 'src/app/routes/user.service';
+import { User } from 'src/app/interfaces/dto/user';
 import { UserInput } from 'src/app/interfaces/input/userInput';
+import { RoleService } from 'src/app/routes/role.service';
+import { UserService } from 'src/app/routes/user.service';
+import { NotifierService } from 'src/app/shared/notifier.service';
+import { UtilsService } from 'src/app/shared/utils.service';
 
 @Component({
   selector: 'app-edit-user',

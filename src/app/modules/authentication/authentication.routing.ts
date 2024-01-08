@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from '../features/page-login/login/login.component';
-import { RegisterComponent } from '../features/page-login/register/register.component';
+import { LoginComponent } from 'src/app/features/page-login/login/login.component';
+import { RegisterComponent } from 'src/app/features/page-login/register/register.component';
 
 export const AuthenticationRoutes: Routes = [
   {
@@ -15,6 +15,5 @@ export const AuthenticationRoutes: Routes = [
         component: RegisterComponent,
       },
     ],
-
   },
 ];

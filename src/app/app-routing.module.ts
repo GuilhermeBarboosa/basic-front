@@ -1,60 +1,30 @@
-import { AuthGuardService } from './guards/auth-guard.service';
 
-import { LoginGuardService } from './guards/login-guard.service';
-import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { UserTableComponent } from './features/user/user-table/user-table.component';
-import { CreateUserComponent } from './features/user/create-user/create-user.component';
-import { EditUserComponent } from './features/user/edit-user/edit-user.component';
-import { InfoUserComponent } from './features/user/info-user/info-user.component';
-import { ProfileComponent } from './features/page-login/profile/profile.component';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginGuardService } from './guards/login-guard.service';
 
 export const routes: Routes = [
   {
     path: 'authentication',
     loadChildren: () =>
-      import('./authentication/authentication.module').then(
+      import('./modules/authentication/authentication.module').then(
         (m) => m.AuthenticationModule
       ),
   },
   {
     path: 'user',
-    children: [
-      {
-        path: '',
-        component: UserTableComponent,
-      },
-      {
-        path: 'register',
-        component: CreateUserComponent,
-        canActivate: [AuthGuardService],
-        data: {
-          role: 'ADMIN',
-        },
-      },
-      {
-        path: 'edit/:id',
-        component: EditUserComponent,
-        canActivate: [AuthGuardService],
-        data: {
-          role: 'ADMIN',
-        },
-      },
-      {
-        path: 'info/:id',
-        component: InfoUserComponent,
-      },
-    ],
+    loadChildren: () =>
+    import('./modules/user/user.module').then(
+      (m) => m.UserModule
+    ),
     canActivate: [LoginGuardService],
   },
   {
     path: 'profile',
-    children: [
-      {
-        path: '',
-        component: ProfileComponent,
-      },
-    ],
+    loadChildren: () =>
+    import('./modules/profile/profile.module').then(
+      (m) => m.ProfileModule
+    ),
     canActivate: [LoginGuardService],
   },
   {

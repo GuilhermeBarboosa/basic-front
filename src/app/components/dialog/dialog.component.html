@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Deseja realmente excluir?</h1>
 <div mat-dialog-actions class="center">
-  <app-button-red [value] = "Nao" mat-button (click)="onNoClick()">Não</app-button-red>
-  <app-button-green [value] = "Sim" mat-button [mat-dialog-close]="data.value" cdkFocusInitial>Sim</app-button-green>
+  <app-button-red class="m-5" [value] = "Nao" mat-button (click)="onNoClick()">Não</app-button-red>
+  <app-button-green class="m-5" [value] = "Sim" mat-button [mat-dialog-close]="data.value" cdkFocusInitial>Sim</app-button-green>
 </div>

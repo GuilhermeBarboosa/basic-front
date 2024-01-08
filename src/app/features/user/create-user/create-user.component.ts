@@ -1,12 +1,12 @@
-import { NotifierService } from 'src/app/shared/notifier.service';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoleService } from 'src/app/routes/role.service';
 import { Role } from 'src/app/interfaces/dto/role';
 import { User } from 'src/app/interfaces/dto/user';
-import { UserService } from 'src/app/routes/user.service';
 import { UserInput } from 'src/app/interfaces/input/userInput';
+import { RoleService } from 'src/app/routes/role.service';
+import { UserService } from 'src/app/routes/user.service';
+import { NotifierService } from 'src/app/shared/notifier.service';
 
 
 @Component({
