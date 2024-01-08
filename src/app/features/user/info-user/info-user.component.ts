@@ -1,4 +1,3 @@
-
 import { NotifierService } from 'src/app/shared/notifier.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -17,12 +16,12 @@ import { UserService } from 'src/app/routes/user.service';
 export class InfoUserComponent implements OnInit {
   formulario!: FormGroup;
   user?: User;
-  roles? : Role[]
+  roles?: Role[];
   isDisabled = true;
   id = this.activedRouter.snapshot.params['id'];
   Editar = 'Editar';
   Voltar = 'Voltar';
-
+  role = '';
   constructor(
     private activedRouter: ActivatedRoute,
     private userService: UserService,
@@ -34,18 +33,14 @@ export class InfoUserComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
+    this.role = localStorage.getItem('role')!;
     this.userService.getById(this.id).subscribe(
       (data) => {
         var userResponse = JSON.parse(JSON.stringify(data));
         this.user = userResponse;
 
-        this.user!.created = this.utils.formatarData(
-          this.user!.created
-        );
-        this.user!.updated = this.utils.formatarData(
-          this.user!.updated
-        );
+        this.user!.created = this.utils.formatarData(this.user!.created);
+        this.user!.updated = this.utils.formatarData(this.user!.updated);
 
         this.createTable();
       },
@@ -89,7 +84,7 @@ export class InfoUserComponent implements OnInit {
     this.router.navigateByUrl(`user/edit/${this.id}`);
   }
 
-  return(){
+  return() {
     this.router.navigateByUrl('/user');
   }
 
@@ -104,5 +99,4 @@ export class InfoUserComponent implements OnInit {
       }
     );
   }
-
 }

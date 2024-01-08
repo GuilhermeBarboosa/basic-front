@@ -51,12 +51,7 @@ export class CreateUserComponent implements OnInit {
         [Validators.required, Validators.email, Validators.minLength(3)],
       ],
       password: ['', [Validators.required, Validators.minLength(3)]],
-      idade: [
-        '',
-        [Validators.required, Validators.min(14), Validators.max(70)],
-      ],
       role: ['', Validators.required],
-      telefone: ['', Validators.required],
       cpf: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
@@ -66,11 +61,9 @@ export class CreateUserComponent implements OnInit {
 
     if (this.formulario.valid) {
       let userDTO = {
-        name: this.formulario.get('nome')?.value,
+        name: this.formulario.get('name')?.value,
         email: this.formulario.get('email')?.value,
-        password: this.formulario.get('senha')?.value,
-        idade: this.formulario.get('idade')?.value,
-        telefone: this.formulario.get('telefone')?.value,
+        password: this.formulario.get('password')?.value,
         cpf: this.formulario.get('cpf')?.value,
         role: this.formulario.get('role')?.value,
       };

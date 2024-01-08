@@ -33,14 +33,14 @@ export class AuthGuardService  {
       const roleJson = JSON.parse(JSON.stringify(route.data));
 
       if (roleJson.role != userRole) {
-        this.router.navigate(['/home']);
+        this.router.navigate(['/user']);
         this.notifier.showError("Você não tem permissão para acessar essa página");
         return false;
       }
       return true;
     }
 
-    this.router.navigate(['/home']);
+    this.router.navigate(['/user']);
     return false;
   }
 }

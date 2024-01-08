@@ -6,6 +6,7 @@ import { NotifierService } from 'src/app/shared/notifier.service';
 import { TokenJwtService } from 'src/app/shared/token-jwt.service';
 import { LoginService } from 'src/app/routes/login.service';
 import { LoginInput } from 'src/app/interfaces/input/loginInput';
+import { CookieService } from '../../../routes/cookie.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private tokenJwtService: TokenJwtService,
+    private cookieService: CookieService,
     private router: Router,
     private formBuilder: FormBuilder,
     private notifier: NotifierService
@@ -42,14 +44,23 @@ export class LoginComponent implements OnInit {
         this.loginForm.get('password')?.value
       );
 
-      console.log(loginInput)
+      console.log(loginInput);
 
       this.loginService.login(loginInput).subscribe(
         (data: any) => {
           var data = JSON.parse(JSON.stringify(data));
           this.tokenJwtService.setToken(data);
-          this.notifier.showSuccess('Login efetuado com sucesso!');
-          this.router.navigate(['/user']);
+          this.loginService.obterClaims().subscribe(
+            (data: any) => {
+              var data = JSON.parse(JSON.stringify(data));
+              this.cookieService.setCookie('role', data.role);
+              this.notifier.showSuccess('Login efetuado com sucesso!');
+              this.router.navigate(['/user']);
+            },
+            (error: any) => {
+              this.notifier.showError(error.error);
+            }
+          );
         },
         (error: any) => {
           this.notifier.showError(error.error);

@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { LoginService } from '../routes/login.service';
+import { CookieService } from '../routes/cookie.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,7 @@ import { LoginService } from '../routes/login.service';
 export class LoginGuardService {
   constructor(
     private loginService: LoginService,
-    private router: Router,
-    private notifier: NotifierService
+    private cookieService : CookieService,
   ) {}
 
   canActivate(
@@ -32,6 +32,10 @@ export class LoginGuardService {
   }
   verifyLogin(route: ActivatedRouteSnapshot, url: any): boolean {
     if (this.loginService.isLogin()) {
+      this.loginService.obterClaims().subscribe( (data) => {
+        var response = JSON.parse(JSON.stringify(data));
+        this.cookieService.setCookie('role', response.role);
+      });
       return true;
     }
     this.loginService.logout();

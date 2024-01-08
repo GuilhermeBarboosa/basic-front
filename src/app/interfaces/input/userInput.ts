@@ -1,8 +1,6 @@
 export class UserInput {
   name: string | undefined;
 
-  idade: number | undefined;
-
   cpf : string | undefined;
 
   email: string | undefined;
@@ -10,7 +8,6 @@ export class UserInput {
   password: string | undefined ;
 
   role : number | undefined;
-
 
   constructor(user: any) {
     this.name = user.name;

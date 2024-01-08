@@ -1,6 +1,5 @@
 import { AuthGuardService } from './guards/auth-guard.service';
 
-
 import { LoginGuardService } from './guards/login-guard.service';
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -9,7 +8,6 @@ import { CreateUserComponent } from './features/user/create-user/create-user.com
 import { EditUserComponent } from './features/user/edit-user/edit-user.component';
 import { InfoUserComponent } from './features/user/info-user/info-user.component';
 import { ProfileComponent } from './features/page-login/profile/profile.component';
-
 
 export const routes: Routes = [
   {
@@ -29,10 +27,18 @@ export const routes: Routes = [
       {
         path: 'register',
         component: CreateUserComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          role: 'ADMIN',
+        },
       },
       {
         path: 'edit/:id',
         component: EditUserComponent,
+        canActivate: [AuthGuardService],
+        data: {
+          role: 'ADMIN',
+        },
       },
       {
         path: 'info/:id',

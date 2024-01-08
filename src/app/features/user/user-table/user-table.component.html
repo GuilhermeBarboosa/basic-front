@@ -12,7 +12,7 @@
         </p>
       </div>
 
-      <div class="">
+      <div class="" *ngIf="role == 'ADMIN'">
         <a routerLink="register" routerLinkActive="active">
           <app-button-green [value]="Adicionar"></app-button-green>
         </a>

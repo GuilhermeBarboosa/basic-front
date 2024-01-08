@@ -1,5 +1,11 @@
 import { Router } from '@angular/router';
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateUserComponent } from '../create-user/create-user.component';
 import { MatSort } from '@angular/material/sort';
@@ -16,7 +22,7 @@ import { UserInput } from 'src/app/interfaces/input/userInput';
   templateUrl: './user-table.component.html',
   styleUrls: ['./user-table.component.css'],
 })
-export class UserTableComponent implements OnInit, AfterViewInit  {
+export class UserTableComponent implements OnInit, AfterViewInit {
   value?: String;
   mandaFiltroTrue = 'Ativar';
   mandaFiltroFalse = 'Excluir';
@@ -28,22 +34,34 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
     'role',
     'status',
     'info',
-    'excluir',
+    'excluir'
   ];
-  Adicionar = "Adicionar";
-  Info = "Info";
+  Adicionar = 'Adicionar';
+  Info = 'Info';
+  role = '';
 
-  usersArray = new MatTableDataSource<User>;
+  usersArray = new MatTableDataSource<User>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private userService: UserService,
     public dialog: MatDialog,
     private router: Router,
-    private notifier: NotifierService,
+    private notifier: NotifierService
   ) {}
 
   ngOnInit() {
+    this.role = localStorage.getItem('role')!;
+
+    if (this.role != 'ADMIN') {
+      console.log('entrou')
+      const columnsToKeep: string[] = this.displayedColumns.filter(column =>
+        column !== 'excluir' && column !== 'status'
+      );
+
+      this.displayedColumns = [...columnsToKeep];
+    }
+
     this.initTable();
   }
 
@@ -53,8 +71,8 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
 
   applyFilter(event: Event) {
     let filterValue = (event.target as HTMLInputElement).value;
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.usersArray.filter = filterValue;
   }
 
@@ -63,15 +81,12 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
   }
 
   ativar(user: User) {
-
     let userInput = new UserInput(user);
 
-    this.userService.ativar(userInput, user.id!).subscribe(
-      (data) => {
-        this.notifier.showSuccess('Usuário ativado com sucesso!');
-        window.location.reload();
-      }
-    );
+    this.userService.ativar(userInput, user.id!).subscribe((data) => {
+      this.notifier.showSuccess('Usuário ativado com sucesso!');
+      window.location.reload();
+    });
 
     window.location.reload();
   }
@@ -79,11 +94,11 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
   openDialog(user: any): void {
     let dialogRef = this.dialog.open(DialogComponent, {
       width: '250px',
-      data: { value: this.value }
+      data: { value: this.value },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result) {
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.userService.delete(user.id).subscribe(
           (data) => {
             this.notifier.showSuccess('Usuário excluído com sucesso!');
@@ -97,7 +112,7 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
     });
   }
 
-  initTable(){
+  initTable() {
     this.userService.getAll().subscribe((data) => {
       var usersResponse = JSON.parse(JSON.stringify(data));
 
@@ -107,21 +122,17 @@ export class UserTableComponent implements OnInit, AfterViewInit  {
         } else {
           user.actived = 'Desativado';
         }
-        }
-
-      );
+      });
       this.usersArray.data = usersResponse;
-      this.usersArray.filter = "Ativo";
+      this.usersArray.filter = 'Ativo';
     });
   }
 
-
-  getByInativo(){
-    this.usersArray.filter = "Desativado";
+  getByInativo() {
+    this.usersArray.filter = 'Desativado';
   }
 
-  getByAtivo(){
-    this.usersArray.filter = "Ativo";
+  getByAtivo() {
+    this.usersArray.filter = 'Ativo';
   }
-
 }

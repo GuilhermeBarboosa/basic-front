@@ -53,7 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     NgxMaskModule.forRoot({
-      dropSpecialCharacters: false // ao salvar, vai manter a mascara
+      dropSpecialCharacters: false
     }),
     FormsModule,
     ReactiveFormsModule,

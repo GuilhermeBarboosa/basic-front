@@ -63,7 +63,7 @@
             </div>
           </div>
 
-          <div>
+          <div *ngIf="role == 'ADMIN'">
             <div class="flex justify-between" >
 
               <div class="col">
@@ -97,7 +97,7 @@
 
       <div class="flex justify-between pt-3">
         <app-button-green [value] = 'Voltar' (click)="return()"></app-button-green>
-        <app-button-yellow [value] = 'Editar' (click)="edit()"></app-button-yellow>
+        <app-button-yellow  *ngIf="role == 'ADMIN'" [value] = 'Editar' (click)="edit()"></app-button-yellow>
       </div>
     </form>
 

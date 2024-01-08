@@ -25,7 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
     CommonModule,
      RouterModule.forChild(AuthenticationRoutes),
      NgxMaskModule.forRoot({
-      dropSpecialCharacters: false // ao salvar, vai manter a mascara
+      dropSpecialCharacters: false
     }),
      MatFormFieldModule,
      FormsModule,
