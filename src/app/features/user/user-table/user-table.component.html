@@ -73,7 +73,7 @@
             matInput
             (keyup)="applyFilter($event)"
             placeholder="Filter"
-            class="block w-full p-2 pl-10 text-sm text-black border border-green-300 rounded-lg bg-green-50"
+            class="block w-full p-2 pl-10 text-sm text-black border border-blue-300 rounded-lg"
             required
           />
         </div>
@@ -148,7 +148,7 @@
                 <i class="bx bx-trash" (click)="openDialog(user)"></i>
               </div>
               <div *ngIf="user.actived == 'Desativado' && role == 'ADMIN'" class="flex">
-                <i class="bx bx-check" (click)="openDialog(user)"></i>
+                <i class="bx bx-check"  (click)="ativar(user)"></i>
               </div>
             </mat-cell>
           </ng-container>
