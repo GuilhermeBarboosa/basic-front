@@ -1,9 +1,7 @@
 <app-navbar></app-navbar>
 
-
 <app-sidebar></app-sidebar>
 <div class="home-section">
-
   <div class="h-full w-full">
     <div class="flex justify-between m-5">
       <div class="">
@@ -83,7 +81,7 @@
     </div>
 
     <div class="">
-      <div class="example-container  p-4 relative overflow-x-auto">
+      <div class="example-container p-4 relative overflow-x-auto">
         <table mat-table [dataSource]="usersArray" class="mat-elevation-z2">
           <ng-container matColumnDef="id">
             <mat-header-cell mat-header-cell *matHeaderCellDef>
@@ -96,7 +94,9 @@
             <mat-header-cell mat-header-cell *matHeaderCellDef>
               Nome
             </mat-header-cell>
-            <mat-cell mat-cell *matCellDef="let user"> {{ user.name }} </mat-cell>
+            <mat-cell mat-cell *matCellDef="let user">
+              {{ user.name }}
+            </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="email">
@@ -112,14 +112,18 @@
             <mat-header-cell mat-header-cell *matHeaderCellDef>
               Cpf
             </mat-header-cell>
-            <mat-cell mat-cell *matCellDef="let user"> {{ user.cpf }} </mat-cell>
+            <mat-cell mat-cell *matCellDef="let user">
+              {{ user.cpf }}
+            </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="role">
             <mat-header-cell mat-header-cell *matHeaderCellDef>
-              Role
+              Tipo
             </mat-header-cell>
-            <mat-cell mat-cell *matCellDef="let user"> {{ user.role }} </mat-cell>
+            <mat-cell mat-cell *matCellDef="let user">
+              {{ user.role }}
+            </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="status">
@@ -133,32 +137,18 @@
             </div>
           </ng-container>
 
-          <ng-container matColumnDef="info">
-            <mat-header-cell mat-header-cell *matHeaderCellDef> </mat-header-cell>
+          <ng-container matColumnDef="acoes">
+            <mat-header-cell mat-header-cell *matHeaderCellDef>
+            </mat-header-cell>
             <mat-cell mat-cell *matCellDef="let user">
-              <app-button-yellow
-                [value]="Info"
-                class="m-2"
-                (click)="info(user)"
-                value="{{ user.id }}"
-              ></app-button-yellow>
-            </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="excluir">
-            <mat-header-cell mat-header-cell *matHeaderCellDef> </mat-header-cell>
-            <mat-cell mat-cell *matCellDef="let user">
-              <div *ngIf="user.actived == 'Ativo'">
-                <app-button-red
-                  [value]="mandaFiltroFalse"
-                  (click)="openDialog(user)"
-                ></app-button-red>
+              <div class="flex">
+                <i class="bx bx-info-circle" (click)="info(user)"> </i>
               </div>
-              <div *ngIf="user.actived == 'Desativado'">
-                <app-button-green
-                  [value]="mandaFiltroTrue"
-                  (click)="ativar(user)"
-                ></app-button-green>
+              <div *ngIf="user.actived == 'Ativo' && role == 'ADMIN'"  class="flex">
+                <i class="bx bx-trash" (click)="openDialog(user)"></i>
+              </div>
+              <div *ngIf="user.actived == 'Desativado' && role == 'ADMIN'" class="flex">
+                <i class="bx bx-check" (click)="openDialog(user)"></i>
               </div>
             </mat-cell>
           </ng-container>
@@ -168,19 +158,15 @@
         </table>
       </div>
 
-
       <div>
-
-      <mat-paginator
-      #paginator
-      [pageSize]="10"
-      [pageSizeOptions]="[5, 10, 20]"
-      [showFirstLastButtons]="true"
-    >
-    </mat-paginator>
+        <mat-paginator
+          #paginator
+          [pageSize]="10"
+          [pageSizeOptions]="[5, 10, 20]"
+          [showFirstLastButtons]="true"
+        >
+        </mat-paginator>
       </div>
     </div>
-
-
   </div>
 </div>

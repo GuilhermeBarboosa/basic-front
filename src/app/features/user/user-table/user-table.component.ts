@@ -30,8 +30,7 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     'cpf',
     'role',
     'status',
-    'info',
-    'excluir'
+    'acoes',
   ];
   Adicionar = 'Adicionar';
   Info = 'Info';

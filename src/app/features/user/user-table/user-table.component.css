@@ -1,11 +1,40 @@
 .mat-elevation-z2 {
   overflow-x: auto;
- }
+}
 
- .mat-header-cell{
+.mat-header-cell {
   width: 100% !important;
- }
+}
 
 table {
   width: 100%;
+}
+
+.bx {
+  font-size: 30px;
+  padding: 0px 5px 0px 5px;
+}
+
+.bx-info-circle {
+  color: #000000;
+}
+
+.bx-info-circle:hover {
+  color: #ffff00;
+}
+
+.bx-trash {
+  color: #ff0000;
+}
+
+.bx-trash:hover {
+  color: #a80000;
+}
+
+.bx-check {
+  color: #00ff00;
+}
+
+.bx-check:hover {
+  color: #00a800;
 }
