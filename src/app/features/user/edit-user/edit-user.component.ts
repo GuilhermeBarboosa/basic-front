@@ -135,14 +135,12 @@ export class EditUserComponent implements OnInit {
 
       let userInput = new UserInput(userDTO);
 
-      console.log('userInput', userInput);
       this.userService.edit(userInput, this.user!.id!).subscribe(
         (data) => {
           this.notifier.showSuccess('Usuário atualizado com sucesso!');
           this.router.navigateByUrl(`/user`);
         },
         (error) => {
-          console.log(error);
           this.notifier.showError(error.error);
           return;
         }
@@ -164,7 +162,6 @@ export class EditUserComponent implements OnInit {
       this.enderecoService.findCep(this.formulario.get('cep')?.value).subscribe(
         (data) => {
           var enderecoResponse = JSON.parse(JSON.stringify(data));
-          console.log(enderecoResponse);
           this.formulario.get('rua')?.setValue(enderecoResponse.street);
           this.formulario.get('cidade')?.setValue(enderecoResponse.city);
           this.formulario

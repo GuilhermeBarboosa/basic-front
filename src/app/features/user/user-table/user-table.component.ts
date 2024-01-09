@@ -50,7 +50,6 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     this.role = localStorage.getItem('role')!;
 
     if (this.role != 'ADMIN') {
-      console.log('entrou')
       const columnsToKeep: string[] = this.displayedColumns.filter(column =>
         column !== 'excluir' && column !== 'status'
       );

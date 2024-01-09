@@ -43,9 +43,6 @@ export class LoginComponent implements OnInit {
         this.loginForm.get('email')?.value,
         this.loginForm.get('password')?.value
       );
-
-      console.log(loginInput);
-
       this.loginService.login(loginInput).subscribe(
         (data: any) => {
           var data = JSON.parse(JSON.stringify(data));

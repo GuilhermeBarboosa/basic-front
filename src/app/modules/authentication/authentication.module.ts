@@ -8,6 +8,7 @@ import { LoginComponent } from 'src/app/features/page-login/login/login.componen
 import { RegisterComponent } from 'src/app/features/page-login/register/register.component';
 import { SharedModule } from '../shared.module';
 import { AuthenticationRoutes } from './authentication.routing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [LoginComponent, RegisterComponent],

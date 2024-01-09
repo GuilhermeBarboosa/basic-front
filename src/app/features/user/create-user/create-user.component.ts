@@ -81,8 +81,6 @@ export class CreateUserComponent implements OnInit {
   }
 
   save() {
-    console.log(this.formulario);
-
     if (this.formulario.valid) {
       let userDTO = {
         name: this.formulario.get('name')?.value,
@@ -109,7 +107,6 @@ export class CreateUserComponent implements OnInit {
         }
       );
     } else {
-      console.log(this.formulario);
       this.notifier.showError('Formulário inválido!');
     }
   }
@@ -137,7 +134,6 @@ export class CreateUserComponent implements OnInit {
       this.enderecoService.findCep(this.formulario.get('cep')?.value).subscribe(
         (data) => {
           var enderecoResponse = JSON.parse(JSON.stringify(data));
-          console.log(enderecoResponse);
           this.formulario.get('rua')?.setValue(enderecoResponse.street);
           this.formulario.get('cidade')?.setValue(enderecoResponse.city);
           this.formulario

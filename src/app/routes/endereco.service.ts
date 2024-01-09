@@ -10,7 +10,7 @@ constructor(   private http: HttpClient,) { }
 
 
   findCep(cep: string) {
-    return this.http.get(`https://brasilapi.com.br/api/cep/v1/${cep}`);
+   return this.http.get(`https://brasilapi.com.br/api/cep/v1/${cep}`);
   }
 
 }
