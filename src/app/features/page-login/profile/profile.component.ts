@@ -60,6 +60,26 @@ export class ProfileComponent implements OnInit {
         { value: this.user?.email, disabled: this.isDisabled },
         Validators.required,
       ],
+      telefone: [
+        { value: this.user?.telefone, disabled: this.isDisabled },
+        Validators.required,
+      ],
+      rua: [
+        { value: this.user?.rua, disabled: this.isDisabled },
+        Validators.required,
+      ],
+      cidade: [
+        { value: this.user?.cidade, disabled: this.isDisabled },
+        Validators.required,
+      ],
+      bairro: [
+        { value: this.user?.bairro, disabled: this.isDisabled },
+        Validators.required,
+      ],
+      cep: [
+        { value: this.user?.cep, disabled: this.isDisabled },
+        Validators.required,
+      ],
       role: [
         { value: this.user?.idRole, disabled: this.isDisabled },
         Validators.required,

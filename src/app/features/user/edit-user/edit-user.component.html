@@ -3,109 +3,177 @@
 <app-sidebar></app-sidebar>
 
 <div class="home-section">
-
   <form class="h-full m-5" [formGroup]="formulario" *ngIf="formulario">
+    <div class="flex justify-between">
+      <p class="text-black font-medium justify-start text-lg font-bold">
+        EDITAR USUÁRIO
+      </p>
+    </div>
 
-      <div class="flex justify-between">
-        <p class="text-black font-medium justify-start text-lg font-bold">EDITAR
-          USUÁRIO</p>
-      </div>
+    <div class="">
+      <label class="block text-sm text-white" for="id">Código</label>
+      <input
+        formControlName="id"
+        class="default-input p-2.5 text-center"
+        type="text"
+        id="id"
+        required
+      />
+    </div>
 
-      <div class="">
-        <label class="block text-sm text-white" for="nome">Código</label>
-        <input formControlName="id" class="default-input p-2.5 text-center" type="text" id="name" required>
-      </div>
-
-      <form class="h-full" [formGroup]="formulario" *ngIf="formulario">
-        <div>
-          <div class="">
-            <div class="col-span-3">
-              <label class="block text-sm text-white" for="name">Nome</label>
-              <input
-                formControlName="name"
-                class="default-input w-full p-2.5"
-                type="text"
-                id="name"
-                aria-label="name"
-                required
-              />
-            </div>
-
-          </div>
-
-          <div class="">
-
-            <div class="col-span-2">
-              <label class="block text-sm text-white" for="cpf">Cpf</label>
-              <input
-                formControlName="cpf"
-                class="default-input w-full p-2.5"
-                type="text"
-                id="name"
-                aria-label="name"
-                mask="000.000.000-00"
-                required
-              />
-            </div>
-          </div>
-
-          <div class="grid grid-cols-3">
-
-            <div class="col mr-4">
-              <label class="block text-sm text-white " for="email">E-mail</label>
-              <input
-                formControlName="email"
-                class="default-input w-full p-2.5"
-                type="email"
-                id="email"
-                aria-label="email"
-                required
-              />
-            </div>
-
-            <div class="col mr-4">
-              <label class="block text-sm text-white " for="password">Senha</label>
-              <input
-                formControlName="password"
-                class="default-input w-full p-2.5"
-                type="password"
-                id="password"
-                aria-label="password"
-                required
-              />
-            </div>
-
-            <div class="col">
-                <label
-                class="block text-sm text-white"
-                  for="first_name"
-                  >Permissão</label
-                >
-                <select
-                  id="posicao"
-                  formControlName="role"
-                  class="default-input w-full p-2.5"
-                >
-                  <option value="" disabled selected>Selecione a permissão</option>
-                  <option *ngFor="let role of roles" [value]="role.id">
-                    {{ role.role }}
-                  </option>
-                </select>
-              </div>
+    <form class="h-full" [formGroup]="formulario" *ngIf="formulario">
+      <div>
+        <div class="">
+          <div class="col-span-3">
+            <label class="block text-sm text-white" for="name">Nome</label>
+            <input
+              formControlName="name"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="name"
+              aria-label="name"
+              required
+            />
           </div>
         </div>
-      </form>
 
-      <div class="items-center flex justify-between my-2">
-        <div class="align-end">
-          <app-button-red [value] = "Nao" (click)="return()"></app-button-red>
+        <div class="grid grid-cols-4">
+          <div class="col-span-2 mr-4">
+            <label class="block text-sm text-white" for="cpf">Cpf</label>
+            <input
+              formControlName="cpf"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="cpf"
+              aria-label="cpf"
+              mask="000.000.000-00"
+              required
+            />
+          </div>
+
+          <div class="col-span-2">
+            <label class="block text-sm text-white" for="telefone"
+              >Telefone</label
+            >
+            <input
+              formControlName="telefone"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="telefone"
+              aria-label="telefone"
+              mask="(00) 00000-0000"
+              required
+            />
+          </div>
         </div>
 
-        <div>
-          <app-button-green [value] = "Sim" (click)="edit()"></app-button-green>
+        <div class="grid grid-cols-3">
+          <div class="col mr-4">
+            <label class="block text-sm text-white" for="email">E-mail</label>
+            <input
+              formControlName="email"
+              class="default-input w-full p-2.5"
+              type="email"
+              id="email"
+              aria-label="email"
+              required
+            />
+          </div>
+
+          <div class="col mr-4">
+            <label class="block text-sm text-white" for="password">Senha</label>
+            <input
+              formControlName="password"
+              class="default-input w-full p-2.5"
+              type="password"
+              id="password"
+              aria-label="password"
+              required
+            />
+          </div>
+
+          <div class="col">
+            <label class="block text-sm text-white" for="first_name"
+              >Permissão</label
+            >
+            <select
+              id="posicao"
+              formControlName="role"
+              class="default-input w-full p-2.5"
+            >
+              <option value="" disabled selected>Selecione a permissão</option>
+              <option *ngFor="let role of roles" [value]="role.id">
+                {{ role.role }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4">
+          <div class="col-span-1 mr-4">
+            <label class="block text-sm text-white" for="cep">Cep</label>
+            <input
+              #inputCep
+              formControlName="cep"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="cep"
+              aria-label="cep"
+              required
+              mask="00000-000"
+            />
+          </div>
+
+          <div class="col-span-3">
+            <label class="block text-sm text-white" for="rua">Rua</label>
+            <input
+              formControlName="rua"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="rua"
+              aria-label="rua"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-4">
+          <div class="col-span-2 mr-4">
+            <label class="block text-sm text-white" for="cidade">Cidade</label>
+            <input
+              #inputCep
+              formControlName="cidade"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="cidade"
+              aria-label="cidade"
+              required
+            />
+          </div>
+
+          <div class="col-span-2">
+            <label class="block text-sm text-white" for="bairro">Bairro</label>
+            <input
+              formControlName="bairro"
+              class="default-input w-full p-2.5"
+              type="text"
+              id="bairro"
+              aria-label="bairro"
+              required
+            />
+          </div>
         </div>
       </div>
+    </form>
 
-</form>
+    <div class="items-center flex justify-between my-2">
+      <div class="align-end">
+        <app-button-red [value]="Nao" (click)="return()"></app-button-red>
+      </div>
 
+      <div>
+        <app-button-green [value]="Sim" (click)="edit()"></app-button-green>
+      </div>
+    </div>
+  </form>
 </div>

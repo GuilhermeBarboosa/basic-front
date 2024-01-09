@@ -35,9 +35,9 @@
 
           </div>
 
-          <div class="grid grid-cols-4">
+          <div class="grid grid-cols-3">
 
-            <div class="col-span-2 mr-4">
+            <div class="col mr-4">
               <label class="block text-sm text-white" for="cpf">Cpf</label>
               <input
                 formControlName="cpf"
@@ -50,7 +50,7 @@
               />
             </div>
 
-            <div class="col-span-2">
+            <div class="col mr-4">
               <label class="block text-sm text-white " for="email">E-mail</label>
               <input
                 formControlName="email"
@@ -58,6 +58,73 @@
                 type="email"
                 id="email"
                 aria-label="email"
+                required
+              />
+            </div>
+
+            <div class="col">
+              <label class="block text-sm text-white " for="telefone">Telefone</label>
+              <input
+                formControlName="telefone"
+                class="default-input w-full p-2.5"
+                type="telefone"
+                id="telefone"
+                aria-label="telefone"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-4">
+            <div class="col-span-1 mr-4">
+              <label class="block text-sm text-white" for="cep">Cep</label>
+              <input
+                #inputCep
+                formControlName="cep"
+                class="default-input w-full p-2.5 "
+                type="text"
+                id="cep"
+                aria-label="cep"
+                required
+                mask="00000-000"
+              />
+            </div>
+
+            <div class="col-span-3 ">
+              <label class="block text-sm text-white" for="rua">Rua</label>
+              <input
+                formControlName="rua"
+                class="default-input  w-full p-2.5"
+                type="text"
+                id="rua"
+                aria-label="rua"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-4">
+            <div class="col-span-2 mr-4">
+              <label class="block text-sm text-white" for="cidade">Cidade</label>
+              <input
+                #inputCep
+                formControlName="cidade"
+                class="default-input w-full p-2.5 "
+                type="text"
+                id="cidade"
+                aria-label="cidade"
+                required
+              />
+            </div>
+
+            <div class="col-span-2 ">
+              <label class="block text-sm text-white" for="bairro">Bairro</label>
+              <input
+                formControlName="bairro"
+                class="default-input  w-full p-2.5"
+                type="text"
+                id="bairro"
+                aria-label="bairro"
                 required
               />
             </div>
