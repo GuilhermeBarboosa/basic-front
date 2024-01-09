@@ -55,12 +55,12 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/user']);
             },
             (error: any) => {
-              this.notifier.showError(error.error);
+              this.notifier.showError('Login ou senha incorretos!');
             }
           );
         },
         (error: any) => {
-          this.notifier.showError(error.error);
+          this.notifier.showError('Login ou senha incorretos!');
         }
       );
     }
