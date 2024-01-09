@@ -2,11 +2,11 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { HttpHeaders, HttpRequest } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NotifierService } from 'src/app/shared/notifier.service';
-import { TokenJwtService } from 'src/app/shared/token-jwt.service';
+import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenJwtService } from 'src/app/services/token-jwt.service';
 import { LoginService } from 'src/app/routes/login.service';
 import { LoginInput } from 'src/app/interfaces/input/loginInput';
-import { CookieService } from '../../../routes/cookie.service';
+import { CookieService } from 'src/app/services/cookie.service';
 
 @Component({
   selector: 'app-login',

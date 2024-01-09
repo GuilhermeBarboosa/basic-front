@@ -12,9 +12,9 @@ import { User } from 'src/app/interfaces/dto/user';
 import { UserInput } from 'src/app/interfaces/input/userInput';
 import { RoleService } from 'src/app/routes/role.service';
 import { UserService } from 'src/app/routes/user.service';
-import { NotifierService } from 'src/app/shared/notifier.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { EnderecoService } from '../../../routes/endereco.service';
-import { UtilsService } from 'src/app/shared/utils.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-create-user',

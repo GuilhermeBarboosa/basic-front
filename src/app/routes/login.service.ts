@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { NotifierService } from '../shared/notifier.service';
+import { NotifierService } from '../services/notifier.service';
 import { LoginInput } from '../interfaces/input/loginInput';
 import { environment } from 'src/environment';
 

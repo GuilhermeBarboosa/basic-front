@@ -12,7 +12,7 @@ import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { User } from 'src/app/interfaces/dto/user';
 import { UserInput } from 'src/app/interfaces/input/userInput';
 import { UserService } from 'src/app/routes/user.service';
-import { NotifierService } from 'src/app/shared/notifier.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'app-user-table',

@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { NotifierService } from '../shared/notifier.service';
+import { NotifierService } from '../services/notifier.service';
 import { LoginService } from '../routes/login.service';
 
 @Injectable({

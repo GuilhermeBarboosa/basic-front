@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { NotifierService } from 'src/app/shared/notifier.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 import { LoginService } from 'src/app/routes/login.service';
 
 @Component({

@@ -5,8 +5,8 @@ import { Role } from 'src/app/interfaces/dto/role';
 import { User } from 'src/app/interfaces/dto/user';
 import { RoleService } from 'src/app/routes/role.service';
 import { UserService } from 'src/app/routes/user.service';
-import { NotifierService } from 'src/app/shared/notifier.service';
-import { UtilsService } from 'src/app/shared/utils.service';
+import { NotifierService } from 'src/app/services/notifier.service';
+import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
   selector: 'app-info-user',

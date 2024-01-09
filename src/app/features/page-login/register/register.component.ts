@@ -11,7 +11,7 @@ import { User } from 'src/app/interfaces/dto/user';
 import { UserInput } from 'src/app/interfaces/input/userInput';
 import { EnderecoService } from 'src/app/routes/endereco.service';
 import { UserService } from 'src/app/routes/user.service';
-import { NotifierService } from 'src/app/shared/notifier.service';
+import { NotifierService } from 'src/app/services/notifier.service';
 
 @Component({
   selector: 'app-register',

@@ -1,14 +1,12 @@
-import { Observable } from 'rxjs';
-import { NotifierService } from './../shared/notifier.service';
+import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  Router,
   RouterStateSnapshot,
-  UrlTree,
+  UrlTree
 } from '@angular/router';
-import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoginService } from '../routes/login.service';
-import { CookieService } from '../routes/cookie.service';
+import { CookieService } from '../services/cookie.service';
 
 @Injectable({
   providedIn: 'root',
