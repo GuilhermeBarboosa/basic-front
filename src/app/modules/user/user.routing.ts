@@ -4,6 +4,7 @@ import { EditUserComponent } from 'src/app/features/user/edit-user/edit-user.com
 import { InfoUserComponent } from 'src/app/features/user/info-user/info-user.component';
 import { UserTableComponent } from 'src/app/features/user/user-table/user-table.component';
 import { AuthGuardService } from 'src/app/guards/auth-guard.service';
+import { ProfileGuardService } from 'src/app/guards/profile-guard.service';
 
 export const UserRoutes: Routes = [
   {
@@ -21,10 +22,7 @@ export const UserRoutes: Routes = [
   {
     path: 'edit/:id',
     component: EditUserComponent,
-    canActivate: [AuthGuardService],
-    data: {
-      role: 'ADMIN',
-    },
+    canActivate: [ProfileGuardService],
   },
   {
     path: 'info/:id',

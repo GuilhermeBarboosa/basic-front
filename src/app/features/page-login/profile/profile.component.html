@@ -29,7 +29,7 @@
     <div class="text-gray-700">
       <div class="grid md:grid-cols-2 text-sm">
         <div class="grid grid-cols-2">
-          <div class="px-4 py-2 font-semibold">First Name</div>
+          <div class="px-4 py-2 font-semibold">Name</div>
           <div class="px-4 py-2">{{ user?.name }}</div>
         </div>
         <div class="grid grid-cols-2">
@@ -37,20 +37,20 @@
           <div class="px-4 py-2">{{ user?.cpf }}</div>
         </div>
         <div class="grid grid-cols-2">
-          <div class="px-4 py-2 font-semibold">Contact No.</div>
+          <div class="px-4 py-2 font-semibold">Contact</div>
           <div class="px-4 py-2">{{user?.telefone}}</div>
         </div>
         <div class="grid grid-cols-2">
-          <div class="px-4 py-2 font-semibold">Email.</div>
+          <div class="px-4 py-2 font-semibold">Email</div>
           <div class="px-4 py-2">
-            <a class="text-blue-800" href="mailto:jane@example.com">{{
+            <a class="text-blue-800" href="mailto:{{user?.email}}">{{
               user?.email
             }}</a>
           </div>
         </div>
         <div class="grid grid-cols-2">
           <div class="px-4 py-2 font-semibold">Cep</div>
-          <div class="px-4 py-2">{{user?.cep}}}</div>
+          <div class="px-4 py-2">{{user?.cep}}</div>
         </div>
         <div class="grid grid-cols-2">
           <div class="px-4 py-2 font-semibold">Address</div>
@@ -59,11 +59,11 @@
       </div>
     </div>
     <div class="w-full flex justify-end">
-      <button
-      class="text-red-600 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
+      <a (click)="editProfile()"
+      class="cursor-pointer text-blue-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4"
       >
-      Delete Account
-    </button>
+      Edit Profile
+    </a>
     </div>
   </div>
 </div>

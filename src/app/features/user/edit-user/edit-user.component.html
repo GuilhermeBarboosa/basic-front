@@ -67,7 +67,7 @@
           </div>
         </div>
 
-        <div class="grid grid-cols-3">
+        <div class="grid" [ngClass]="{'grid-cols-3': this.user?.role == 'ADMIN', 'grid-cols-2' : this.user?.role != 'ADMIN'}">
           <div class="col mr-4">
             <label class="block text-sm text-white" for="email">E-mail</label>
             <input
@@ -80,7 +80,7 @@
             />
           </div>
 
-          <div class="col mr-4">
+          <div class="col" [ngClass]="{'mr-4': this.user?.role == 'ADMIN'}">
             <label class="block text-sm text-white" for="password">Senha</label>
             <input
               formControlName="password"
@@ -92,7 +92,7 @@
             />
           </div>
 
-          <div class="col">
+          <div class="col" *ngIf="this.user?.role == 'ADMIN'">
             <label class="block text-sm text-white" for="first_name"
               >Permissão</label
             >

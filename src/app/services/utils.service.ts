@@ -21,7 +21,7 @@ export class UtilsService {
     return data;
   }
 
-  formatterString(string: String) {
+  formatterString(string: string) {
     string = string.toLowerCase();
     string = string.replace(/(^\w{1})|(\s+\w{1})/g, (letra) =>
       letra.toUpperCase()

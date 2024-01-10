@@ -22,32 +22,31 @@ export class ProfileComponent implements OnInit {
 
   user?: User;
   userForm!: FormGroup;
-  jogadorForm! : FormGroup;
+  jogadorForm!: FormGroup;
   isDisabled = true;
 
   ngOnInit() {
-    this.loginService.obterClaims().subscribe((res) => {
-      var data = JSON.parse(JSON.stringify(res));
-      this.userService.getById(Number(data.id)).subscribe((res) => {
-        var userResponse = JSON.parse(JSON.stringify(res));
-        this.user = userResponse;
+    this.loginService.obterClaims().subscribe(
+      (res) => {
+        var data = JSON.parse(JSON.stringify(res));
+        this.userService.getById(Number(data.id)).subscribe((res) => {
+          var userResponse = JSON.parse(JSON.stringify(res));
+          this.user = userResponse;
 
-        this.user!.created = this.utils.formatarData(
-          this.user!.created
-        );
+          this.user!.name = this.utils.formatterString(this.user!.name);
 
-        this.user!.updated = this.utils.formatarData(
-          this.user!.updated
-        );
+          this.user!.created = this.utils.formatarData(this.user!.created);
 
-        this.createTable();
-      });
+          this.user!.updated = this.utils.formatarData(this.user!.updated);
 
-    }, error => {
-      this.loginService.logout();
-    });
+          this.createTable();
+        });
+      },
+      (error) => {
+        this.loginService.logout();
+      }
+    );
   }
-
 
   createTable() {
     this.userForm = this.formBuilder.group({
@@ -99,8 +98,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-
-  findInfo(idRacha: number, idQuadra:number ) {
+  findInfo(idRacha: number, idQuadra: number) {
     this.router.navigateByUrl(`quadra/racha/info/${idRacha}/${idQuadra}`);
+  }
+
+  editProfile() {
+    this.router.navigateByUrl(`user/edit/${this.user?.id}`);
   }
 }
