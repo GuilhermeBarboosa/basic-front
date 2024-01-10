@@ -8,6 +8,7 @@ import { DialogComponent } from '../components/dialog/dialog.component';
 import { NavbarComponent } from '../components/navbar/navbar.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     MatDialogModule,
     ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     SidebarComponent,
@@ -23,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonGreenComponent,
     ButtonRedComponent,
     ButtonYellowComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   declarations:[
     SidebarComponent,
