@@ -69,7 +69,7 @@ export class EditUserComponent implements OnInit {
 
   async createTable() {
     this.formulario = this.formBuilder.group({
-      id: [{ value: this.user?.id, disabled: this.isDisabled }],
+      id: [{ value: this.user?.id, disabled: true }],
       name: [
         { value: this.user?.name, disabled: this.isDisabled },
         Validators.required,

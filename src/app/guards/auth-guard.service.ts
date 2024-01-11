@@ -38,9 +38,9 @@ export class AuthGuardService  {
         return false;
       }
       return true;
+    }else{
+      this.loginService.logout();
+      return false;
     }
-
-    this.router.navigate(['/user']);
-    return false;
   }
 }
