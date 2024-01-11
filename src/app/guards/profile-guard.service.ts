@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import { NotifierService } from '../services/notifier.service';
 import { Observable, of, switchMap } from 'rxjs';
+import { TokenJwtService } from '../services/token-jwt.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,8 @@ export class ProfileGuardService {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private token: TokenJwtService
   ) {}
 
   canActivate(
@@ -37,20 +39,20 @@ export class ProfileGuardService {
         let idEdit = route.params['id'];
 
         return this.loginService.obterClaims().pipe(
-          switchMap((res) => {
+          switchMap( async (res) => {
             let response = JSON.parse(JSON.stringify(res));
             let idLogin = response.id;
-            const userRole = localStorage.getItem('role');
+            let userRole = await this.token.getRole();
 
             if (userRole === 'ADMIN') {
-              return of(true);
+              return true;
             } else {
               if (idLogin == idEdit) {
-                return of(true);
+                return true;
               } else {
                 window.history.back()
                 this.notifier.showError('Você não tem permissão para acessar essa página');
-                return of(false);
+                return false;
               }
             }
           })

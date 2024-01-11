@@ -6,6 +6,7 @@ import { User } from 'src/app/interfaces/dto/user';
 import { RoleService } from 'src/app/routes/role.service';
 import { UserService } from 'src/app/routes/user.service';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenJwtService } from 'src/app/services/token-jwt.service';
 import { UtilsService } from 'src/app/services/utils.service';
 
 @Component({
@@ -28,11 +29,12 @@ export class InfoUserComponent implements OnInit {
     private router: Router,
     private utils: UtilsService,
     private formBuilder: FormBuilder,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private token: TokenJwtService
   ) {}
 
-  ngOnInit() {
-    this.role = localStorage.getItem('role')!;
+  async ngOnInit() {
+    this.role = await this.token.getRole();
     this.userService.getById(this.id).subscribe(
       (data) => {
         var userResponse = JSON.parse(JSON.stringify(data));

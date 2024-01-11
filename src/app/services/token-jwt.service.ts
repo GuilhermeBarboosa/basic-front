@@ -1,5 +1,6 @@
 import { LoginService } from 'src/app/routes/login.service';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,4 +15,19 @@ export class TokenJwtService {
   getToken() {
     return localStorage.getItem('token');
   }
+
+  getRole(): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      this.loginService.obterClaims().subscribe(
+        (data: any) => {
+          console.log(data.role);
+          resolve(data.role);
+        },
+        (error) => {
+          reject(error);
+        }
+      );
+    });
+  }
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/routes/login.service';
+import { TokenJwtService } from '../../services/token-jwt.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,11 +10,12 @@ import { LoginService } from 'src/app/routes/login.service';
 export class SidebarComponent implements OnInit {
 
 
-  role = localStorage.getItem('role');
-  constructor( private loginService: LoginService) { }
+  role = '';
+  constructor( private loginService: LoginService, private token: TokenJwtService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.openMenu();
+    this.role = await this.token.getRole();
   }
 
   openMenu() {

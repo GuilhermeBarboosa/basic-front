@@ -3,6 +3,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@a
 import { Injectable } from '@angular/core';
 import { NotifierService } from '../services/notifier.service';
 import { LoginService } from '../routes/login.service';
+import { TokenJwtService } from '../services/token-jwt.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,8 @@ export class AuthGuardService  {
   constructor(
     private loginService: LoginService,
     private router: Router,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private token: TokenJwtService
   ) {}
 
   canActivate(
@@ -29,7 +31,7 @@ export class AuthGuardService  {
   checkUserLogin(route: ActivatedRouteSnapshot, url: any): boolean {
     if (this.loginService.verifyToken()) {
 
-      const userRole = localStorage.getItem('role');
+      const userRole = this.token.getRole();
       const roleJson = JSON.parse(JSON.stringify(route.data));
 
       if (roleJson.role != userRole) {

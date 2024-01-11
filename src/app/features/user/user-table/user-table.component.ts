@@ -1,9 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -13,6 +8,7 @@ import { User } from 'src/app/interfaces/dto/user';
 import { UserInput } from 'src/app/interfaces/input/userInput';
 import { UserService } from 'src/app/routes/user.service';
 import { NotifierService } from 'src/app/services/notifier.service';
+import { TokenJwtService } from 'src/app/services/token-jwt.service';
 
 @Component({
   selector: 'app-user-table',
@@ -43,15 +39,16 @@ export class UserTableComponent implements OnInit, AfterViewInit {
     private userService: UserService,
     public dialog: MatDialog,
     private router: Router,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private token: TokenJwtService
   ) {}
 
-  ngOnInit() {
-    this.role = localStorage.getItem('role')!;
+  async ngOnInit() {
+    this.role = await this.token.getRole();
 
     if (this.role != 'ADMIN') {
-      const columnsToKeep: string[] = this.displayedColumns.filter(column =>
-        column !== 'excluir' && column !== 'status'
+      const columnsToKeep: string[] = this.displayedColumns.filter(
+        (column) => column !== 'excluir' && column !== 'status'
       );
 
       this.displayedColumns = [...columnsToKeep];

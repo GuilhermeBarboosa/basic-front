@@ -32,7 +32,7 @@ export class LoginGuardService {
     if (this.loginService.isLogin()) {
       this.loginService.obterClaims().subscribe( (data) => {
         var response = JSON.parse(JSON.stringify(data));
-        this.cookieService.setCookie('role', response.role);
+        // this.cookieService.setCookie('role', response.role);
       });
       return true;
     }
