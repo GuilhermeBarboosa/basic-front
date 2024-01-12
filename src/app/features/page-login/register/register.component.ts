@@ -56,7 +56,6 @@ export class RegisterComponent implements OnInit {
 
   register() {
 
-    console.log(this.registerForm)
 
     if (
       this.registerForm.get('password')?.value !=

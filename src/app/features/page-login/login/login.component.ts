@@ -64,4 +64,9 @@ export class LoginComponent implements OnInit {
       );
     }
   }
+
+  showPassword() {
+    let input = document.querySelector('#password') as HTMLInputElement;
+    input!.type = input!.type === 'text' ? 'password' : 'text';
+  }
 }

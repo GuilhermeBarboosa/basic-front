@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .full-height {
   height: 100vh !important;
 }
@@ -22,3 +26,7 @@ hr {
   width: 30%;
 }
 
+
+.left{
+ left: 90%;
+}

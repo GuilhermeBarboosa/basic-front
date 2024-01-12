@@ -28,11 +28,14 @@ export class AuthGuardService  {
     return this.checkUserLogin(next, url);
   }
 
-  checkUserLogin(route: ActivatedRouteSnapshot, url: any): boolean {
+  async checkUserLogin(route: ActivatedRouteSnapshot, url: any): Promise<boolean> {
     if (this.loginService.verifyToken()) {
 
-      const userRole = this.token.getRole();
+      let userRole = await this.token.getRole();
       const roleJson = JSON.parse(JSON.stringify(route.data));
+
+      console.log(userRole )
+      console.log(roleJson.role)
 
       if (roleJson.role != userRole) {
         this.router.navigate(['/user']);

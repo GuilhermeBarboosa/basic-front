@@ -20,7 +20,6 @@ export class TokenJwtService {
     return new Promise<string>((resolve, reject) => {
       this.loginService.obterClaims().subscribe(
         (data: any) => {
-          console.log(data.role);
           resolve(data.role);
         },
         (error) => {
