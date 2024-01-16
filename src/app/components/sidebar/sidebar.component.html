@@ -26,7 +26,7 @@
     <i (click)="openMenu()" class="bx bx-menu" id="btn"></i>
   </div>
   <li>
-    <i class="bx bx-search"></i>
+    <i class="bx bx-search" (click)="openMenu()"></i>
     <input type="text" placeholder="Search..." (keyup)="applyFilter($event)" />
     <span class="tooltip">Search</span>
   </li>
@@ -36,14 +36,14 @@
         <i class="bx bx-user"></i>
         <span class="links_name">Profile</span>
       </a>
-      <!-- <span class="tooltip">Profile</span> -->
+      <p class="tooltip">Profile</p>
     </li>
     <li>
       <a routerLink="/user" routerLinkActive="active">
         <i class="bx bxs-user-detail"></i>
         <span class="links_name">User</span>
       </a>
-      <!-- <span class="tooltip">User</span> -->
+      <p class="tooltip">User</p>
     </li>
   </ul>
   <li class="profile">

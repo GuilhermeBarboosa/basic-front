@@ -30,10 +30,19 @@ export class LoginGuardService {
   }
   verifyLogin(route: ActivatedRouteSnapshot, url: any): boolean {
     if (this.loginService.isLogin()) {
-      this.loginService.obterClaims().subscribe( (data) => {
-        var response = JSON.parse(JSON.stringify(data));
-        // this.cookieService.setCookie('role', response.role);
-      });
+
+      this.loginService.verifyToken().subscribe(
+        (res) => {
+          this.loginService.obterClaims().subscribe( (data) => {
+            var response = JSON.parse(JSON.stringify(data));
+          }, (err) => {
+            this.loginService.logout();
+          });
+        },
+        (err) => {
+          this.loginService.logout();
+        }
+      );
       return true;
     }
     this.loginService.logout();
