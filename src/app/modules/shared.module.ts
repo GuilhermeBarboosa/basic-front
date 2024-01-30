@@ -9,6 +9,7 @@ import { NavbarComponent } from '../components/navbar/navbar.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SpinnerComponent } from '../components/spinner/spinner.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { RouterModule } from '@angular/router';
     ButtonGreenComponent,
     ButtonRedComponent,
     ButtonYellowComponent,
+    SpinnerComponent,
     ReactiveFormsModule,
     RouterModule
   ],
@@ -32,6 +34,7 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     DialogComponent,
     NavbarComponent,
+    SpinnerComponent,
     ButtonGreenComponent,
     ButtonRedComponent,
     ButtonYellowComponent,

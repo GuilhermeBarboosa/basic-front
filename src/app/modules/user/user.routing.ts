@@ -5,6 +5,7 @@ import { InfoUserComponent } from 'src/app/features/user/info-user/info-user.com
 import { UserTableComponent } from 'src/app/features/user/user-table/user-table.component';
 import { AuthGuardService } from 'src/app/guards/auth-guard.service';
 import { ProfileGuardService } from 'src/app/guards/profile-guard.service';
+import { roles } from 'src/roles';
 
 export const UserRoutes: Routes = [
   {
@@ -16,7 +17,14 @@ export const UserRoutes: Routes = [
     component: CreateUserComponent,
     canActivate: [AuthGuardService],
     data: {
-      role: 'ADMIN',
+      rolesArray:[
+         {
+          role: roles.ROLE_ADMIN
+         },
+        //  {
+        //   role: roles.ROLE_USER
+        //  }
+      ]
     },
   },
   {

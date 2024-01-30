@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ValidationErrors } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class UtilsService {
   }
 
   formatarDataToSQL(data: any) {
-    data = data.split("/").reverse().join("/");
+    data = data.split('/').reverse().join('/');
     data = new Date(data);
     return data;
   }
@@ -31,13 +32,12 @@ export class UtilsService {
   }
 
   validarCPF(cpf: string): boolean {
-    cpf = cpf.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+    cpf = cpf.replace(/[^\d]+/g, '');
 
     if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
-      return false; // Retorna falso se o CPF não tiver 11 dígitos ou se for composto por uma sequência repetida de números
+      return false;
     }
 
-    // Validação do primeiro dígito verificador
     let soma = 0;
     for (let i = 0; i < 9; i++) {
       soma += parseInt(cpf.charAt(i)) * (10 - i);
@@ -46,10 +46,9 @@ export class UtilsService {
     let digitoVerificador1 = resto === 10 || resto === 11 ? 0 : resto;
 
     if (digitoVerificador1 !== parseInt(cpf.charAt(9))) {
-      return false; // Retorna falso se o primeiro dígito verificador não for válido
+      return false;
     }
 
-    // Validação do segundo dígito verificador
     soma = 0;
     for (let i = 0; i < 10; i++) {
       soma += parseInt(cpf.charAt(i)) * (11 - i);
@@ -58,9 +57,47 @@ export class UtilsService {
     let digitoVerificador2 = resto === 10 || resto === 11 ? 0 : resto;
 
     if (digitoVerificador2 !== parseInt(cpf.charAt(10))) {
-      return false; // Retorna falso se o segundo dígito verificador não for válido
+      return false;
     }
 
-    return true; // Retorna verdadeiro se o CPF for válido
+    return true;
+  }
+
+  ordenarAlfabetico(array: any[]) {
+    const compararEdital = (a: { edital: string }, b: { edital: string }) => {
+      const editalA = a.edital.toLowerCase();
+      const editalB = b.edital.toLowerCase();
+
+      if (editalA < editalB) {
+        return -1;
+      }
+      if (editalA > editalB) {
+        return 1;
+      }
+      return 0;
+    };
+
+    return array.slice().sort(compararEdital);
+  }
+
+  getFormValidationErrors(form: any) {
+    Object.keys(form.controls).forEach((key) => {
+      const control = form.get(key);
+      if (control) {
+        const controlErrors: ValidationErrors | null = control.errors;
+        if (controlErrors != null) {
+          Object.keys(controlErrors).forEach((keyError) => {
+            console.log(
+              'Key control: ' +
+                key +
+                ', keyError: ' +
+                keyError +
+                ', err value: ',
+              controlErrors[keyError]
+            );
+          });
+        }
+      }
+    });
   }
 }
